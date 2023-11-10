@@ -1,0 +1,36 @@
+<table class="table table-borderless">
+    <tr>
+        <td class="profile-avatar">
+            <a href="{{ url_for('user', username=post.author) }}">
+                {% for user in users %}
+                    {% if user.username==post.author %}
+                        <img class="profile-avatar" src="{{ user.avatar(200) }}" alt="user_avatar"/>
+                    {% endif %}
+                {% endfor %}
+            </a>
+        </td>
+        <td>
+            <a href="{{ url_for('user', username=post.author) }}" class="btn btn-outline-primary">
+                {{ post.author }}
+            </a>
+            <!-- Se l'utente corrente è autenticato e
+            1 è almeno un redattore o
+            2 è l'autore del post -->
+            {% if (current_user.is_authenticated) and (roles[current_user.role] > 0 or current_user.username == post.author) %}
+                <div class="button-right">
+                    <button type="button" class="btn btn-primary" onclick="editPost(this, {{ post.id }})">
+                        Modifica
+                    </button>
+                    <a href="{{ url_for('delete_post', post_id=post.id) }}" class="btn btn-primary">
+                        Elimina
+                    </a>
+                </div>
+            {% endif %}
+            <br>
+            <br>
+            <div id="{{ post.id }}">
+                <p class="post_body">{{ post.body }}</p>
+            </div>
+        </td>
+    </tr>
+</table>

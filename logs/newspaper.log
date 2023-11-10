@@ -1,0 +1,20 @@
+2023-11-10 08:58:14,658 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata_Giornalistica\app\__init__.py:28] 
+2023-11-10 08:58:23,853 ERROR: Exception on /pubislhed/rehgeh [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+Traceback (most recent call last):
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata_Giornalistica\app\routes.py", line 59, in published
+    author = User.query.filter_by(username=article.author).first()
+                                           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'author'
+2023-11-10 09:10:22,081 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 

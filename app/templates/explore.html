@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    {% for article in first_col %}
+        <div class="row">
+            <div class="col-sm-7">
+                <table class="table">
+                    <tr>
+                        <td style="width: 180px" style="width: 180px">
+                            <a href="{{ url_for('published', article_title=article.title) }}">
+                                <img class="explore-image" src="{{ article.head_image() }}">
+                            </a>
+                        </td>
+                        <td>
+                            <h5 class="text-link">
+                                <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
+                                    {{ article.title }}
+                                </a>
+                            </h5>
+                            <h6 style="color: red; display: inline">SEZIONE</h6>
+                            <p style="display: inline">di</p>
+                            <p class="text-link" style="display: inline">
+                                <a class="text-anchor" href="{{ url_for('user', username=article.author) }}">
+                                {{ article.author }}
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {% if second_col %}
+                {% set second_article = second_col.pop() %}
+                <div class="col-sm-5">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <h5 class="text-link">
+                                    <a class="text-anchor" href="{{ article.head_image() }}">
+                                        {{ second_article.title }}
+                                    </a>
+                                </h5>
+                                <h6 style="color: red; display: inline">SEZIONE</h6>
+                                <p style="display: inline">di</p>
+                                <p class="text-link" style="display: inline">
+                                    <a class="text-anchor" href="{{ url_for('user', username=second_article.author) }}">
+                                    {{ second_article.author }}
+                                    </a>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    {% for article in second_row %}
+    {% endfor %}
+
+{% endblock %}

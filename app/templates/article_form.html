@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>{{ title }}</h1>
+    <hr>
+    {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal serve col metodo flash -->
+        {% if messages %} <!-- controlla che vi siano messaggi -->
+            <ul>
+                {% for message in messages %}
+                    <div class="alert alert-info">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-sm-4" id="article-form">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.title.label }}<br/>
+                    {{ form.title(rows=1) }}
+                </p>
+                {% for error in form.title.errors %}
+                    <div class="alert alert-warning">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-sm-8" id="article-form">
+                <p>
+                    {{ form.subtitle.label }}<br/>
+                    {{ form.subtitle(rows=1) }}
+                </p>
+                {% for error in form.subtitle.errors %}
+                    <div class="alert alert-warning">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" id="article-form">
+                <p>
+                    {{ form.body.label }}<br/>
+                    {{ form.body(rows=10) }}
+                </p>
+                {% for error in form.body.errors %}
+                    <div class="alert alert-warning">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6" id="article-form">
+                <p>
+                    {{ form.head_img.label }}
+                </p>
+            </div>
+        </div>
+        <!-- Il radio button è gestito tramite script e non dal server, che si occuperà invece di gestire eventualmente l'upload del file o la URL diretta.
+        Di seguito si combina un normale form HTML con i Flask For: la condizione if form.validate_on_submit() renderebbe la gestione del form seguente
+        un po' più complessa da gestire -->
+        <div class="row">
+            <div class="col-sm-6" id="article-form">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">Scegli immagine dal PC (in formato png o jpeg)</label>
+                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1"
+                           onchange="changeState('radio1', 'radio2', 'image-file', 'image-url')">
+                </div><br>
+                <p>
+                    <input id='image-file' type="file" name="filename" accept="image/png, image/jpeg" disabled>
+                </p><br/>
+            </div>
+            <div class="col-sm-6" id="article-form">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio2">Inserisci URL immagine</label>
+                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2"
+                           onchange="changeState('radio1', 'radio2', 'image-file', 'image-url')">
+                </div><br>
+                 <p>
+                     {{ form.head_img(id='image-url', disabled=True, type='url') }}
+                </p><br/>
+                {% for error in form.head_img.errors %}
+                    <div class="alert alert-warning">
+                        <strong>{{ error }}</strong>
+                    </div>
+                    {% endfor %}
+            </div>
+        </div>
+            <p class="submit-form">
+                {{ form.submit() }}
+            </p>
+    </form>
+{% endblock %}

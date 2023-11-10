@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal server col metodo flash -->
+        {% if messages %} <!-- controlla che vi siano messaggi -->
+            <ul>
+                {% for message in messages %}
+                    <div class="alert alert-info">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class="row">
+        {% for article in first_row %}
+            <div class="col-sm-6" id="image-link">
+                <a href="{{ url_for('published', article_title=article.title) }}">
+                    <div class="index-image">
+                        <img class="index-image" src="{{ article.head_image() }}">
+                        <div class="text-block">
+                            <h4>{{ article.title }}</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        {% for article in second_row %}
+            <div class="col-sm-4 pt-5" id="image-link">
+                <a href="{{ url_for('published', article_title=article.title) }}">
+                    <div class="index-image">
+                        <img class="index-image" src="{{ article.head_image() }}">
+                        <div class="text-block">
+                            <h4>{{ article.title }}</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <hr>
+    <div class="row">
+        {% for article in third_row %}
+            <div class="col-sm-4">
+                <table class="table">
+                    <tr>
+                        <td style="width: 150px">
+                            <a href="{{ article.head_image() }}">
+                                <div class="index">
+                                    <img class="index-image" src="{{ article.head_image() }}">
+                                </div>
+                            </a>
+                        </td>
+                        <td>
+                            <h5 class="text-link">
+                                <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
+                                    {{ article.title }}
+                                </a>
+                            </h5>
+                            <h6 style="color: red; display: inline">SEZIONE</h6>
+                            <p style="display: inline">di</p>
+                            <p class="text-link" style="display: inline">
+                                <a class="text-anchor" href="{{ url_for('user', username=article.author) }}">
+                                {{ article.author }}
+                                </a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

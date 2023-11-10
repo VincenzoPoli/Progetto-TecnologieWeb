@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% if title %}
+        <title>HardwareTested - {{ title }}</title>
+    {% else %}
+        <title>HardwareTested</title>
+    {% endif %}
+
+</head>
+
+<body>
+    <div class="background-div">
+
+        <!-- dizionario per gestire in modo efficace le azioni possibili per ogni ruolo -->
+        {% set roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0} %}
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url_for('index') }}">HardwareTested</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mynavbar">
+                    <ul class="navbar-nav me-auto">
+                        {% if current_page == 'explore' %}
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('explore') }}">Esplora</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('explore') }}">Esplora</a>
+                            </li>
+                        {% endif %}
+                        {% if current_user.is_authenticated %}
+                            {% if current_page == 'user' %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{{ url_for('user', username=current_user.username) }}">Modifica profilo</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">Modifica profilo</a>
+                                </li>
+                            {% endif %}
+                            {% if roles[current_user.role] > 0 %}
+                                {% if current_page == 'new_article' %}
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{{ url_for('new_article') }}">Scrivi Articolo</a>
+                                </li>
+                                {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url_for('new_article') }}">Scrivi Articolo</a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </ul>
+                    <ul class="navbar-nav">
+                        {% if current_user.is_anonymous %}
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('login') }}"><i class="bi bi-door-open"></i> Login</a>
+                            </li>
+                        {% elif current_user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container bg-white p-5 my-5" id="body_page"><br/>
+            {% block app_content %}{% endblock %}
+        </div>
+
+        <div class="mt-5 p-4 bg-dark text-white text-center">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h3>Studente</h3>
+                        <p>Vincenzo Poli</p>
+                        <h3>Matricola</h3>
+                        <p>0124001487</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <h2>Università degli Studi di Napoli "Parthenope"</h2>
+                        <h3>Corso di Laurea in Informatica</h3>
+                        <h4>Progetto Tecnologie Web</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function changeState(btn1_id, btn2_id, input1_id, input2_id) {
+            let btn1_radio, btn2_radio, input1, input2
+            btn1_radio = document.getElementById(btn1_id)
+            btn2_radio = document.getElementById(btn2_id)
+            input1 = document.getElementById(input1_id)
+            input2 = document.getElementById(input2_id)
+            if (btn1_radio.checked) {
+                input1.removeAttribute("disabled")
+                input2.setAttribute("disabled", "")
+            }
+
+            if (btn2_radio.checked) {
+                input2.removeAttribute("disabled")
+                input1.setAttribute("disabled", "")
+            }
+        }
+        function editPost(btn_el, id) {
+            btn_el.setAttribute("hidden", true)
+
+            let div_el, right_button, body_el, form_el, text_el, submit_el, content
+
+            div_el = document.getElementById(id)
+            body_el = document.getElementById(id).children[0]
+            content = body_el.innerHTML
+            div_el.removeChild(body_el)
+
+            form_el = document.createElement("form")
+            form_el.setAttribute("action", "/edit_post/" + id)
+            form_el.setAttribute("method", "post")
+
+            text_el = document.createElement("textarea")
+            text_el.setAttribute("rows", "4")
+            text_el.setAttribute("name", "new_body")
+            text_el.innerHTML = content
+
+            right_button = document.createElement("div")
+            right_button.setAttribute("class", "button-right")
+
+            submit_el = document.createElement("button")
+            submit_el.setAttribute("type", "submit")
+            submit_el.setAttribute("class", "btn btn-outline-primary")
+            submit_el.innerHTML = "Applica"
+
+            div_el.appendChild(form_el)
+            form_el.appendChild(text_el)
+            form_el.appendChild(right_button)
+            right_button.appendChild(submit_el)
+        }
+        function alertDeletingProfile() {
+            if (confirm('Sei sicuro di voler cancellare il tuo account? Non potrai più tornare indietro.')) {
+                window.location.href = "{{ url_for('delete_user') }}"
+            } else {
+              // Non fare niente!
+            }
+        }
+    </script>
+</body>
+
+</html>
+

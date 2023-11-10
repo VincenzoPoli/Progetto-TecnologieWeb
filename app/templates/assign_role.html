@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>{{ title }}</h1>
+    <hr>
+    {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal serve col metodo flash -->
+        {% if messages %} <!-- controlla che vi siano messaggi -->
+            <ul>
+                {% for message in messages %}
+                    <div class="alert alert-info">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>Ruolo: {{ user.role }}</h2>
+            <div class="card" style="width:100%">
+                <img class="card-img-top" src="{{ user.avatar(256) }}" alt="avatar" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">{{ user.username }}</h4>
+                    {% if user.about_me %}
+                        <p class="card-text">{{ user.about_me }}</p>
+                    {% endif %}
+                    <p>{{ user.followers.count() }} followers,  {{ user.followed.count() }} following.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 p-5 my-5 border" id="article-form">
+            <form action="" method="post">
+                <h4>Seleziona ruolo</h4><br/>
+                {{ form.hidden_tag() }}
+                {% if roles[current_user.role] == 3 %}
+                    <p>
+                        {{ form.role_for_admin() }}
+                        {% for error in form.role_for_admin.errors %} <!-- Flask gestisce in automatico gli errori, basta aggiungere il codice HTML opportuno, come segue -->
+                        <div class="alert alert-warning">
+                            <strong>{{ error }}</strong>
+                        </div>
+                        {% endfor %}
+                    </p><br/>
+                    <p>
+                        {{ form.role_for_chief_editor(hidden=True) }}
+                    </p><br/>
+                {% elif roles[current_user.role] == 2 %}
+                    <p>
+                        {{ form.role_for_admin(hidden=True) }}
+                    </p><br/>
+
+                    <p>
+                        {{ form.role_for_chief_editor() }}
+                        {% for error in form.role_for_chief_editor.errors %} <!-- Flask gestisce in automatico gli errori, basta aggiungere il codice HTML opportuno, come segue -->
+                        <div class="alert alert-warning">
+                            <strong>{{ error }}</strong>
+                        </div>
+                        {% endfor %}
+                    </p><br/>
+                {% endif %}
+                <p class="submit-form">
+                    {{ form.submit() }}
+                </p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

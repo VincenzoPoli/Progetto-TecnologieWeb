@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    <!-- Se l'utente corrente è autenticato e
+        1 è almeno capo-redattore o
+        2 è l'autore dell'articolo -->
+    {% if (current_user.is_authenticated) and (roles[current_user.role] > 1 or current_user.username == author.username) %}
+        <div class="button-right">
+            <a href="{{ url_for('edit_article', article_title=article.title) }}" class="btn btn-primary">
+                Modifica
+            </a>
+            <a href="{{ url_for('delete_article', article_id=article.id) }}" class="btn btn-primary">
+                Elimina
+            </a>
+        </div>
+    {% endif %}
+
+    <h1>Ciao, {{ current_user.username }}</h1>
+    <hr>
+
+    {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal serve col metodo flash -->
+        {% if messages %} <!-- controlla che vi siano messaggi -->
+            <ul>
+                {% for message in messages %}
+                    <div class="alert alert-info">
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <div class="row">
+
+        <div class="col-sm-3">
+            <h2>Autore</h2>
+            <div class="card" style="width:100%">
+                <img class="card-img-top" src="{{ author.avatar(200) }}" alt="avatar">
+                <div class="card-body">
+                    <h4 class="card-title">{{ author.username }}</h4>
+                    <p class="card-text">{{ author.about_me }}</p>
+                    <p class="profile-button">
+                        <a href="{{ url_for('user', username=author.username) }}" class="btn btn-primary">
+                            Visualizza Profilo
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            <h2>{{ article.title }}</h2>
+            <p><i>{{ article.subtitle }}</i></p>
+            <hr>
+            <p style="text-align: right">{{ date_hour }}</p>
+            <hr>
+            <img class="head_image" src="{{ article.head_image() }}" alt="head_img"/><br><br>
+            <p class="article-body">{{ article.body }}</p>
+        </div>
+
+    </div>
+
+    <br><br>
+    <h4>Commenti: {{ post_count }}</h4>
+    <hr>
+
+    {% if current_user.is_authenticated %}
+        {% if form %}
+            <form action="" method="POST">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.post.label }}<br/><br/>
+                    {{ form.post(rows=6) }}
+                    {% for error in form.post.errors %}
+                        <div class="alert alert-info">
+                            <strong>{{ error }}</strong>
+                        </div>
+                    {% endfor %}
+                <p class="submit-form">{{ form.submit }}</p>
+            </form>
+            <hr>
+        {% endif %}
+    {% endif %}
+
+    {% if posts %}
+        {% for post in posts %}
+            {% include "_post.html" %}
+        {% endfor %}
+    {% endif %}
+    {% if next_url and prev_url %}
+        <ul class="pagination justify-content-end">
+            <li class="page-item"><a class="page-link" href="{{ next_url }}">Older Posts</a></li>
+            <li class="page-item"><a class="page-link" href="{{ prev_url }}">Newer Posts</a></li>
+        </ul>
+    {% elif next_url %}
+        <ul class="pagination justify-content-end">
+            <li class="page-item"><a class="page-link" href="{{ next_url }}">Older Posts</a></li>
+            <li class="page-item disabled"><a class="page-link" href="{{ prev_url }}">Newer Posts</a></li>
+        </ul>
+    {% elif prev_url %}
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled"><a class="page-link" href="{{ next_url }}">Older Posts</a></li>
+            <li class="page-item"><a class="page-link" href="{{ prev_url }}">Newer Posts</a></li>
+        </ul>
+    {% endif %}
+
+{% endblock %}

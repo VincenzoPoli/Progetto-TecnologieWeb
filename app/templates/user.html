@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+     <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+            <h2>Ruolo: {{ user.role }}</h2>
+            <div class="card" style="width:100%">
+                <img class="card-img-top" src="{{ user.avatar(250) }}" alt="avatar" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">{{ user.username }}</h4>
+                    {% if user.about_me %}
+                        <p class="card-text">{{ user.about_me }}</p>
+                    {% endif %}
+                    <!-- Se l'utente corrente è almeno un capo-redattore
+                    e se il proprio ruolo ha priorità maggiore di quello dell'utente visulizzato -->
+                    {% if roles[current_user.role] > 1 and roles[current_user.role] > roles[user.role] %}
+                        <p class="profile-button">
+                            <a href="{{ url_for('assign_role', username=user.username) }}" class="btn btn-primary">
+                                Assegna Ruolo
+                            </a>
+                        </p>
+                    {% endif %}
+                    {% if user.username == current_user.username %}
+                        <p class="profile-button">
+                            <a href="{{ url_for('edit_profile') }}" class="btn btn-primary">
+                                Edita Profilo
+                            </a>
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+        </div>
+     </div>
+{% endblock %}
