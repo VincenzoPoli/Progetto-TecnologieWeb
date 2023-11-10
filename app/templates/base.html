@@ -120,6 +120,7 @@
             }
         }
         function editPost(btn_el, id) {
+
             btn_el.setAttribute("hidden", true)
 
             let div_el, right_button, body_el, form_el, text_el, submit_el, content
@@ -136,7 +137,7 @@
             text_el = document.createElement("textarea")
             text_el.setAttribute("rows", "4")
             text_el.setAttribute("name", "new_body")
-            text_el.innerHTML = content
+            text_el.value = content
 
             right_button = document.createElement("div")
             right_button.setAttribute("class", "button-right")
@@ -152,10 +153,38 @@
             right_button.appendChild(submit_el)
         }
         function alertDeletingProfile() {
-            if (confirm('Sei sicuro di voler cancellare il tuo account? Non potrai più tornare indietro.')) {
+            if (confirm("Sei sicuro di voler cancellare il tuo account? Non potrai più tornare indietro.")) {
                 window.location.href = "{{ url_for('delete_user') }}"
             } else {
               // Non fare niente!
+            }
+        }
+        function textFormatting(id) {
+            let textBody, content, highlighted
+            textBody = document.getElementById("body-textarticle")
+            highlighted = window.getSelection().toString()
+            content = textBody.value
+            if (id == 'bold') {
+                if (highlighted){
+                    textBody.value = content.replace(highlighted, "<b>" + highlighted + "</b>")
+                } else {
+                    textBody.value = content + "<b></b>"
+                }
+            }
+            else if (id == 'italic') {
+                if (highlighted){
+                    textBody.value = content.replace(highlighted, "<i>" + highlighted + "</i>")
+                } else {
+                    textBody.value = content + "<i></i>"
+                }
+            }
+
+            else if (id == 'underline') {
+                if (highlighted){
+                    textBody.value = content.replace(highlighted, "<u>" + highlighted + "</u>")
+                } else {
+                    textBody.value = content + "<u></u>"
+                }
             }
         }
     </script>

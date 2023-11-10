@@ -16,7 +16,7 @@
     {% endwith %}
     <form action="" method="post" enctype="multipart/form-data">
         <div class="row">
-            <div class="col-sm-4" id="article-form">
+            <div class="col-sm-5" id="article-form">
                 {{ form.hidden_tag() }}
                 <p>
                     {{ form.title.label }}<br/>
@@ -28,7 +28,7 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="col-sm-8" id="article-form">
+            <div class="col-sm-7" id="article-form">
                 <p>
                     {{ form.subtitle.label }}<br/>
                     {{ form.subtitle(rows=1) }}
@@ -43,8 +43,13 @@
         <div class="row">
             <div class="col-sm-12" id="article-form">
                 <p>
-                    {{ form.body.label }}<br/>
-                    {{ form.body(rows=10) }}
+                    {{ form.body.label }}
+                    <span class="formatting-buttons">
+                        <button type="button" class="btn btn-light" id="bold" onclick="textFormatting('bold')"><i class="bi bi-type-bold"></i></button>
+                        <button type="button" class="btn btn-light" onclick="textFormatting('italic')"><i class="bi bi-type-italic" id="italic"></i></button>
+                        <button type="button" class="btn btn-light" onclick="textFormatting('underline')"><i class="bi bi-type-underline" id="underline"></i></button>
+                    </span>
+                    {{ form.body(id='body-textarticle', rows=10) }}
                 </p>
                 {% for error in form.body.errors %}
                     <div class="alert alert-warning">

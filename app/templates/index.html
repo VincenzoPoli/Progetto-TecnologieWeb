@@ -20,6 +20,7 @@
                         <img class="index-image" src="{{ article.head_image() }}">
                         <div class="text-block">
                             <h4>{{ article.title }}</h4>
+                            <p><i>a cura di:</i> <strong>{{ article.author }}</strong></p>
                         </div>
                     </div>
                 </a>
@@ -34,6 +35,7 @@
                         <img class="index-image" src="{{ article.head_image() }}">
                         <div class="text-block">
                             <h4>{{ article.title }}</h4>
+                            <p><i>a cura di:</i> <strong>{{ article.author }}</strong></p>
                         </div>
                     </div>
                 </a>
@@ -48,24 +50,24 @@
                     <tr>
                         <td style="width: 150px">
                             <a href="{{ article.head_image() }}">
-                                <div class="index">
-                                    <img class="index-image" src="{{ article.head_image() }}">
-                                </div>
+                                <img class="index-image-bottom" src="{{ article.head_image() }}">
                             </a>
                         </td>
-                        <td>
+                        <!-- relative è necessario per posizionare la citazione dell'autore dove si desidera -->
+                        <td style="position: relative">
                             <h5 class="text-link">
                                 <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
                                     {{ article.title }}
                                 </a>
                             </h5>
-                            <h6 style="color: red; display: inline">SEZIONE</h6>
-                            <p style="display: inline">di</p>
-                            <p class="text-link" style="display: inline">
+                            <span class="author-text-table">
+                                <p style="display: inline"><i>a cura di:</i> </p>
+                                <p class="text-link" style="display: inline">
                                 <a class="text-anchor" href="{{ url_for('user', username=article.author) }}">
-                                {{ article.author }}
+                                    <strong>{{ article.author }}</strong>
                                 </a>
-                            </p>
+                                </p>
+                            </span>
                         </td>
                     </tr>
                 </table>

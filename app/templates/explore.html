@@ -11,19 +11,21 @@
                                 <img class="explore-image" src="{{ article.head_image() }}">
                             </a>
                         </td>
-                        <td>
+                        <td style="position: relative">
                             <h5 class="text-link">
                                 <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
                                     {{ article.title }}
                                 </a>
                             </h5>
-                            <h6 style="color: red; display: inline">SEZIONE</h6>
-                            <p style="display: inline">di</p>
-                            <p class="text-link" style="display: inline">
+                            <!-- relative è necessario per posizionare la citazione dell'autore dove si desidera -->
+                            <span class="author-text-table">
+                                <p style="display: inline"><i>a cura di:</i> </p>
+                                <p class="text-link" style="display: inline">
                                 <a class="text-anchor" href="{{ url_for('user', username=article.author) }}">
-                                {{ article.author }}
+                                    <strong>{{ article.author }}</strong>
                                 </a>
-                            </p>
+                                </p>
+                            </span>
                         </td>
                     </tr>
                 </table>
