@@ -3,24 +3,23 @@
 {% block app_content %}
     {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal server col metodo flash -->
         {% if messages %} <!-- controlla che vi siano messaggi -->
-            <ul>
-                {% for message in messages %}
-                    <div class="alert alert-info">
-                        <strong>{{ message }}</strong>
-                    </div>
-                {% endfor %}
-            </ul>
+            {% for message in messages %}
+                <div class="alert alert-info">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
         {% endif %}
     {% endwith %}
+    <div style="float: right"><img src="http://127.0.0.1:5000/static/logo/bbblogobbb.png" alt="Index Banner" style="width:175px"></div><br>
+    <hr>
     <div class="row">
         {% for article in first_row %}
-            <div class="col-sm-6" id="image-link">
-                <a href="{{ url_for('published', article_title=article.title) }}">
-                    <div class="index-image">
-                        <img class="index-image" src="{{ article.head_image() }}">
+            <div class="col-sm-6 pt-5" id="image-link-first">
+                <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
+                    <div class="index">
+                        <img class="index-image" src="{{ article.head_image() }}" alt="index-image">
                         <div class="text-block">
-                            <h4>{{ article.title }}</h4>
-                            <p><i>a cura di:</i> <strong>{{ article.author }}</strong></p>
+                            <h3 class="text-link">{{ article.title }}</h3>
                         </div>
                     </div>
                 </a>
@@ -29,13 +28,12 @@
     </div>
     <div class="row">
         {% for article in second_row %}
-            <div class="col-sm-4 pt-5" id="image-link">
-                <a href="{{ url_for('published', article_title=article.title) }}">
-                    <div class="index-image">
-                        <img class="index-image" src="{{ article.head_image() }}">
+            <div class="col-sm-4 pt-5" id="image-link-second">
+                <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
+                    <div class="index">
+                        <img class="index-image" src="{{ article.head_image() }}" alt="index-image">
                         <div class="text-block">
-                            <h4>{{ article.title }}</h4>
-                            <p><i>a cura di:</i> <strong>{{ article.author }}</strong></p>
+                            <h3 class="text-link">{{ article.title }}</h3>
                         </div>
                     </div>
                 </a>
@@ -45,12 +43,12 @@
     <hr>
     <div class="row">
         {% for article in third_row %}
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <table class="table">
                     <tr>
                         <td style="width: 150px">
                             <a href="{{ article.head_image() }}">
-                                <img class="index-image-bottom" src="{{ article.head_image() }}">
+                                <img class="index-image-bottom" src="{{ article.head_image() }}" alt="index-image-bottom">
                             </a>
                         </td>
                         <!-- relative è necessario per posizionare la citazione dell'autore dove si desidera -->
@@ -61,12 +59,12 @@
                                 </a>
                             </h5>
                             <span class="author-text-table">
-                                <p style="display: inline"><i>a cura di:</i> </p>
-                                <p class="text-link" style="display: inline">
-                                <a class="text-anchor" href="{{ url_for('user', username=article.author) }}">
-                                    <strong>{{ article.author }}</strong>
-                                </a>
-                                </p>
+                                <span>Pubblicato da: </span>
+                                <span class="text-link">
+                                    <a class="btn btn-light" href="{{ url_for('user', username=article.author) }}">
+                                        <strong>{{ article.author }}</strong>
+                                    </a>
+                                </span>
                             </span>
                         </td>
                     </tr>

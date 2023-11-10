@@ -16,18 +16,18 @@
         </div>
     {% endif %}
 
-    <h1>Ciao, {{ current_user.username }}</h1>
-    <hr>
+    {% if current_user.is_authenticated %}
+        <h1>Ciao, {{ current_user.username }}</h1>
+        <hr>
+    {% endif %}
 
     {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal serve col metodo flash -->
         {% if messages %} <!-- controlla che vi siano messaggi -->
-            <ul>
-                {% for message in messages %}
-                    <div class="alert alert-info">
-                        <strong>{{ message }}</strong>
-                    </div>
-                {% endfor %}
-            </ul>
+            {% for message in messages %}
+                <div class="alert alert-info">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
         {% endif %}
     {% endwith %}
 
@@ -56,7 +56,8 @@
             <p style="text-align: right">{{ date_hour }}</p>
             <hr>
             <img class="head_image" src="{{ article.head_image() }}" alt="head_img"/><br><br>
-            <p class="article-body">{{ article.body }}</p>
+            <!-- con safe si dichara possibile e sicuro interpretare codice: con questo si interpreteranno i codici di formattazione html -->
+            <p class="article-body">{{ article.body | safe }}</p>
         </div>
 
     </div>

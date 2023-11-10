@@ -5,13 +5,11 @@
     <hr>
     {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal serve col metodo flash -->
         {% if messages %} <!-- controlla che vi siano messaggi -->
-            <ul>
-                {% for message in messages %}
-                    <div class="alert alert-info">
-                        <strong>{{ message }}</strong>
-                    </div>
-                {% endfor %}
-            </ul>
+            {% for message in messages %}
+                <div class="alert alert-info">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
         {% endif %}
     {% endwith %}
     <div class="row">
@@ -30,12 +28,12 @@
                 <p>
                     {{ form.username.label }}<br>
                     {{ form.username(size=32) }}
-                    {% for error in form.username.errors %}
-                        <div class="alert alert-warning">
-                            <strong>{{ error }}</strong>
-                        </div>
-                    {% endfor %}
                 </p>
+                {% for error in form.username.errors %}
+                    <div class="alert alert-warning">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
                 <p>
                     {{ form.avatar_link.label }}<br>
                 </p>
@@ -55,26 +53,26 @@
                         Inserisci URL immagine<br><br>
                     <p>
                         {{ form.avatar_link(id='image-url', disabled=True, type='url') }}
-                        {% for error in form.avatar_link.errors %}
-                            <div class="alert alert-warning">
-                                <strong>{{ error }}</strong>
-                            </div>
-                        {% endfor %}
-                    </p><br>
+                    </p>
+                    {% for error in form.avatar_link.errors %}
+                        <div class="alert alert-warning">
+                            <strong>{{ error }}</strong>
+                        </div>
+                    {% endfor %}<br>
                 </div>
                 <p>
                     {{ form.about_me.label }}<br/>
                     {{ form.about_me(rows=6) }}
-                    {% for error in form.about_me.errors %}
-                        <div class="alert alert-warning">
-                            <strong>{{ error }}</strong>
-                        </div>
-                    {% endfor %}
                 </p>
+                {% for error in form.about_me.errors %}
+                    <div class="alert alert-warning">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
                 <p class="submit-form">{{ form.submit() }}</p>
             </form><br>
             <div class="profile-button">
-                <a href="{{ url_for('edit_password') }}"class="btn btn-outline-primary">Modifica password</a><br><br>
+                <a href="{{ url_for('edit_password') }}" class="btn btn-outline-primary">Modifica password</a><br><br>
                 <button type="button" class="btn btn-outline-danger" onclick="alertDeletingProfile()">Elimina account</button>
             </div>
         </div>

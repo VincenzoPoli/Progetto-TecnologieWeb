@@ -1,46 +1,56 @@
-2023-11-10 13:09:46,265 ERROR: Exception on /pubislhed/Titolo [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
-Traceback (most recent call last):
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata\app\routes.py", line 83, in published
-    return render_template(
-           ^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\templating.py", line 152, in render_template
-    return _render(app, template, context)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\templating.py", line 133, in _render
-    rv = template.render(context)
-         ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\Matisse\Desktop\Testata\app\templates\published.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Matisse\Desktop\Testata\app\templates\base.html", line 82, in top-level template code
-    {% block app_content %}{% endblock %}
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata\app\templates\published.html", line 39, in block 'app_content'
-    <img class="card-img-top" src="{{ author.avatar(200) }}" alt="avatar">
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\utils.py", line 83, in from_obj
-    if hasattr(obj, "jinja_pass_arg"):
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'None' has no attribute 'avatar'
-2023-11-10 13:14:19,557 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 13:14:46,188 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 13:15:08,595 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 13:15:39,776 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 13:17:37,872 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 13:18:26,911 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 13:19:03,239 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:47:36,502 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:49:22,185 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:49:35,598 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:50:26,236 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:51:35,941 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:52:37,266 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:57:06,691 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:58:20,718 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:58:37,098 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:59:11,385 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 18:59:42,768 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:00:04,279 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:00:21,617 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:01:12,883 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:02:20,578 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:02:53,571 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:03:39,820 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:04:07,405 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:04:38,558 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:05:13,401 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:07:36,265 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:11:56,228 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:12:09,432 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:12:47,128 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:13:11,098 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:13:40,370 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:13:59,915 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:40:39,085 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:42:56,826 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:43:45,127 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:48:31,240 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:49:11,790 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 19:49:51,921 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:00:25,019 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:07:05,816 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:07:20,464 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:08:02,505 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:08:48,946 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:09:02,676 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:12:30,166 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:15:02,220 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:15:27,263 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:15:56,155 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:16:23,021 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:16:35,492 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:16:47,397 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:17:49,307 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:19:17,106 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:19:26,845 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:19:34,639 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:20:11,338 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:20:32,091 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:20:57,476 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:21:42,255 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:22:00,241 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:22:09,292 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 

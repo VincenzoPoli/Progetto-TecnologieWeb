@@ -25,7 +25,9 @@
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{ url_for('index') }}">HardwareTested</a>
+                <a class="navbar-brand" href="{{ url_for('index') }}">
+                    <img src="http://127.0.0.1:5000/static/logo/aaalogoaaa.jpg" alt="Logo" style="width:50px;" class="rounded-pill">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -33,31 +35,31 @@
                     <ul class="navbar-nav me-auto">
                         {% if current_page == 'explore' %}
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ url_for('explore') }}">Esplora</a>
+                                <a class="nav-link active" href="{{ url_for('explore') }}"><i class="bi bi-globe"></i> Esplora</a>
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url_for('explore') }}">Esplora</a>
+                                <a class="nav-link" href="{{ url_for('explore') }}"><i class="bi bi-globe"></i> Esplora</a>
                             </li>
                         {% endif %}
                         {% if current_user.is_authenticated %}
                             {% if current_page == 'user' %}
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="{{ url_for('user', username=current_user.username) }}">Modifica profilo</a>
+                                    <a class="nav-link active" href="{{ url_for('user', username=current_user.username) }}"><i class="bi bi-person"></i> Modifica profilo</a>
                                 </li>
                             {% else %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">Modifica profilo</a>
+                                    <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}"><i class="bi bi-person"></i> Modifica profilo</a>
                                 </li>
                             {% endif %}
                             {% if roles[current_user.role] > 0 %}
                                 {% if current_page == 'new_article' %}
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="{{ url_for('new_article') }}">Scrivi Articolo</a>
+                                    <a class="nav-link active" href="{{ url_for('new_article') }}"><i class="bi bi-pen"></i> Scrivi Articolo</a>
                                 </li>
                                 {% else %}
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ url_for('new_article') }}">Scrivi Articolo</a>
+                                        <a class="nav-link" href="{{ url_for('new_article') }}"><i class="bi bi-pen"></i> Scrivi Articolo</a>
                                     </li>
                                 {% endif %}
                             {% endif %}
@@ -76,11 +78,11 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav><br><br><br><br>
 
         <div class="container bg-white p-5 my-5" id="body_page"><br/>
             {% block app_content %}{% endblock %}
-        </div>
+        </div><br><br><br><br>
 
         <div class="mt-5 p-4 bg-dark text-white text-center">
             <div class="container mt-5">
@@ -164,23 +166,20 @@
             textBody = document.getElementById("body-textarticle")
             highlighted = window.getSelection().toString()
             content = textBody.value
-            if (id == 'bold') {
-                if (highlighted){
+            if (id === "bold") {
+                if (highlighted) {
                     textBody.value = content.replace(highlighted, "<b>" + highlighted + "</b>")
                 } else {
                     textBody.value = content + "<b></b>"
                 }
-            }
-            else if (id == 'italic') {
-                if (highlighted){
+            } else if (id === "italic") {
+                if (highlighted) {
                     textBody.value = content.replace(highlighted, "<i>" + highlighted + "</i>")
                 } else {
                     textBody.value = content + "<i></i>"
                 }
-            }
-
-            else if (id == 'underline') {
-                if (highlighted){
+            } else if (id === "underline") {
+                if (highlighted) {
                     textBody.value = content.replace(highlighted, "<u>" + highlighted + "</u>")
                 } else {
                     textBody.value = content + "<u></u>"

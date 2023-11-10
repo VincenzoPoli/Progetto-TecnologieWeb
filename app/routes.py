@@ -14,9 +14,12 @@ login.login_view = 'login'
 @app.route('/')
 @app.route('/index')
 def index():
-    first_row = Article.query[:2]
-    second_row = Article.query[2:5]
-    third_row = Article.query[5:8]
+    # grazie a session sarà possibile ritornare alla pagina precedente quando si sottomette un form come ad esempio quello di login o modifica commenti
+    session['url'] = request.full_path
+    articles = Article.query.order_by(Article.timeStamp.desc()).all()
+    first_row = articles[:2]
+    second_row = articles[2:5]
+    third_row = articles[5:7]
     return render_template('index.html', title='Home', first_row=first_row, second_row=second_row, third_row=third_row)
 
 
@@ -27,9 +30,12 @@ def explore():
     # paginate(page, per_page, error_out, max_per_page)
     # Returns per_page items from page page
     current_page = 'explore'
+    # grazie a session sarà possibile ritornare alla pagina precedente quando si sottomette un form come ad esempio quello di login o modifica commenti
+    session['url'] = request.full_path
     page = request.args.get('page', 1, type=int)
-    first_col = Article.query[:8]
-    second_col = Article.query[8:16]
+    articles = Article.query.order_by(Article.timeStamp.desc()).all()
+    first_col = articles[:8]
+    second_col = articles[8:16]
     '''if posts.has_next:
         next_url = url_for('explore', page=posts.next_num)
     else:
@@ -101,7 +107,7 @@ def login():
             flash('Username o password errati.')
             return redirect(url_for('index'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('index'))
+        return redirect(session['url'])
     return render_template('login.html', title='Accedi', form=form)
 
 
@@ -109,7 +115,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(session['url'])
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -222,7 +228,7 @@ def new_article():
         db.session.commit()
         flash("Il tuo articolo è stato pubblicato!")
         flash('Immagine salvata con successo!')
-        return redirect(url_for('new_article'))
+        return redirect(url_for('index'))
 
     return render_template('article_form.html', title='Nuovo articolo', form=form, current_page=current_page)
 

@@ -5,13 +5,11 @@
     <hr>
     {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal serve col metodo flash -->
         {% if messages %} <!-- controlla che vi siano messaggi -->
-            <ul>
-                {% for message in messages %}
-                    <div class="alert alert-info">
-                        <strong>{{ message }}</strong>
-                    </div>
-                {% endfor %}
-            </ul>
+            {% for message in messages %}
+                <div class="alert alert-info">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
         {% endif %}
     {% endwith %}
     <div class="row">
@@ -35,12 +33,12 @@
                 {% if roles[current_user.role] == 3 %}
                     <p>
                         {{ form.role_for_admin() }}
-                        {% for error in form.role_for_admin.errors %} <!-- Flask gestisce in automatico gli errori, basta aggiungere il codice HTML opportuno, come segue -->
+                    </p>
+                    {% for error in form.role_for_admin.errors %} <!-- Flask gestisce in automatico gli errori, basta aggiungere il codice HTML opportuno, come segue -->
                         <div class="alert alert-warning">
                             <strong>{{ error }}</strong>
                         </div>
-                        {% endfor %}
-                    </p><br/>
+                    {% endfor %}<br/>
                     <p>
                         {{ form.role_for_chief_editor(hidden=True) }}
                     </p><br/>
@@ -51,12 +49,12 @@
 
                     <p>
                         {{ form.role_for_chief_editor() }}
-                        {% for error in form.role_for_chief_editor.errors %} <!-- Flask gestisce in automatico gli errori, basta aggiungere il codice HTML opportuno, come segue -->
+                    </p>
+                    {% for error in form.role_for_chief_editor.errors %} <!-- Flask gestisce in automatico gli errori, basta aggiungere il codice HTML opportuno, come segue -->
                         <div class="alert alert-warning">
                             <strong>{{ error }}</strong>
                         </div>
-                        {% endfor %}
-                    </p><br/>
+                    {% endfor %}<br/>
                 {% endif %}
                 <p class="submit-form">
                     {{ form.submit() }}

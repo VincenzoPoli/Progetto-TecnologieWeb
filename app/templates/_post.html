@@ -18,7 +18,7 @@
             2 è l'autore del post -->
             {% if (current_user.is_authenticated) and (roles[current_user.role] > 0 or current_user.username == post.author) %}
                 <div class="button-right">
-                    <button type="button" class="btn btn-primary" onclick="editPost(this, {{ post.id }})">
+                    <button type="button" class="btn btn-primary" onclick="editPost(this, '{{ post.id }}')">
                         Modifica
                     </button>
                     <a href="{{ url_for('delete_post', post_id=post.id) }}" class="btn btn-primary">

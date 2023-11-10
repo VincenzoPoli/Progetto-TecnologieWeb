@@ -4,13 +4,11 @@
         <div class="col-sm-4">
             {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal serve col metodo flash -->
                 {% if messages %} <!-- controlla che vi siano messaggi -->
-                    <ul>
-                        {% for message in messages %}
-                            <div class="alert alert-info">
-                                <strong>{{ message }}</strong>
-                            </div>
-                        {% endfor %}
-                    </ul>
+                    {% for message in messages %}
+                        <div class="alert alert-info">
+                            <strong>{{ message }}</strong>
+                        </div>
+                    {% endfor %}
                 {% endif %}
             {% endwith %}
         </div>
@@ -24,39 +22,39 @@
                 <p>
                     {{ form.username.label }}<br>
                     {{ form.username(size=32) }}<br>
-                    {% for error in form.username.errors %} <!-- Flask gestisce in automatio gli errori, basta aggiungere il codice HTML opportuno, come segue -->
-                        <div class="alert alert-warning">
-                            <strong>{{ error }}</strong>
-                        </div>
-                    {% endfor %}
                 </p>
+                {% for error in form.username.errors %} <!-- Flask gestisce in automatio gli errori, basta aggiungere il codice HTML opportuno, come segue -->
+                    <div class="alert alert-warning">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
                 <p>
                     {{ form.email.label }}<br>
                     {{ form.email(size=32) }}<br>
-                    {% for error in form.email.errors %} <!-- Flask gestisce in automatio gli errori, basta aggiungere il codice HTML opportuno, come segue -->
-                        <div class="alert alert-warning">
-                            <strong>{{ error }}</strong>
-                        </div>
-                    {% endfor %}
                 </p>
+                {% for error in form.email.errors %} <!-- Flask gestisce in automatio gli errori, basta aggiungere il codice HTML opportuno, come segue -->
+                    <div class="alert alert-warning">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
                 <p>
                     {{ form.password1.label }}<br>
                     {{ form.password1(size=32) }}<br>
-                    {% for error in form.password1.errors %} <!-- Flask gestisce in automatio gli errori, basta aggiungere il codice HTML opportuno, come segue -->
-                        <div class="alert alert-warning">
-                            <strong>{{ error }}</strong>
-                        </div>
-                    {% endfor %}
                 </p>
+                {% for error in form.password1.errors %} <!-- Flask gestisce in automatio gli errori, basta aggiungere il codice HTML opportuno, come segue -->
+                    <div class="alert alert-warning">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}
                 <p>
                     {{ form.password2.label }}<br>
                     {{ form.password2(size=32) }}<br>
-                    {% for error in form.password2.errors %} <!-- Flask gestisce in automatio gli errori, basta aggiungere il codice HTML opportuno, come segue -->
-                        <div class="alert alert-warning">
-                            <strong>{{ error }}</strong>
-                        </div>
-                    {% endfor %}
-                </p><br>
+                </p>
+                {% for error in form.password2.errors %} <!-- Flask gestisce in automatio gli errori, basta aggiungere il codice HTML opportuno, come segue -->
+                    <div class="alert alert-warning">
+                        <strong>{{ error }}</strong>
+                    </div>
+                {% endfor %}<br>
                 <p class="submit-form">{{ form.submit() }}</p>
             </form>
         </div>

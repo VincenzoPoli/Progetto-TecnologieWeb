@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    {% for article in first_col %}
+
+{% for article in first_col %}
         <div class="row">
             <div class="col-sm-7">
                 <table class="table">
                     <tr>
-                        <td style="width: 180px" style="width: 180px">
+                        <td style="width: 180px">
                             <a href="{{ url_for('published', article_title=article.title) }}">
-                                <img class="explore-image" src="{{ article.head_image() }}">
+                                <img class="explore-image" src="{{ article.head_image() }}" alt="explore-image">
                             </a>
                         </td>
                         <td style="position: relative">
@@ -17,15 +18,12 @@
                                     {{ article.title }}
                                 </a>
                             </h5>
-                            <!-- relative è necessario per posizionare la citazione dell'autore dove si desidera -->
-                            <span class="author-text-table">
-                                <p style="display: inline"><i>a cura di:</i> </p>
-                                <p class="text-link" style="display: inline">
-                                <a class="text-anchor" href="{{ url_for('user', username=article.author) }}">
+                            <p style="display: inline">Pubblicato da: </p>
+                            <p class="text-link" style="display: inline">
+                                <a class="btn btn-light" href="{{ url_for('user', username=article.author) }}">
                                     <strong>{{ article.author }}</strong>
                                 </a>
-                                </p>
-                            </span>
+                            </p>
                         </td>
                     </tr>
                 </table>
@@ -43,7 +41,7 @@
                                 </h5>
                                 <h6 style="color: red; display: inline">SEZIONE</h6>
                                 <p style="display: inline">di</p>
-                                <p class="text-link" style="display: inline">
+                                <p class="text-link">
                                     <a class="text-anchor" href="{{ url_for('user', username=second_article.author) }}">
                                     {{ second_article.author }}
                                     </a>
@@ -54,9 +52,6 @@
                 </div>
             {% endif %}
         </div>
-    {% endfor %}
-
-    {% for article in second_row %}
     {% endfor %}
 
 {% endblock %}

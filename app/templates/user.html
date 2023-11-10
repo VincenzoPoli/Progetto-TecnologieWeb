@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-     <div class="row">
+    <div class="row">
         <div class="col-sm-4">
         </div>
         <div class="col-sm-4">
-            <h2>Ruolo: {{ user.role }}</h2>
+            <hr>
+            <h4 style="text-align: center">Ruolo: <button type="button" class="btn btn-outline-info">{{ user.role }}</button></h4>
+            <hr>
             <div class="card" style="width:100%">
                 <img class="card-img-top" src="{{ user.avatar(250) }}" alt="avatar" style="width:100%">
                 <div class="card-body">
@@ -34,5 +36,5 @@
         </div>
         <div class="col-sm-4">
         </div>
-     </div>
+    </div>
 {% endblock %}
