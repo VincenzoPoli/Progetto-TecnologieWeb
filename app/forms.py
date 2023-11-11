@@ -1,7 +1,7 @@
 from flask import request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, SelectField
-from wtforms.validators import DataRequired, EqualTo, Email, ValidationError, Length
+from wtforms.validators import DataRequired, EqualTo, Email, ValidationError, Length, Regexp
 from app.models import User, Article
 from flask_login import current_user
 
@@ -60,7 +60,7 @@ class LoginForm(FlaskForm):
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password1 = PasswordField('Password', validators=[DataRequired()])
+    password1 = PasswordField('Password', validators=[DataRequired(), Regexp('(?=.*[a-zA-Z])(?=.*\d)', message='Richiesti numeri e lettere.')])
     password2 = PasswordField('Password', validators=[DataRequired(), EqualTo('password1')])
     submit = SubmitField('Registrati')
 

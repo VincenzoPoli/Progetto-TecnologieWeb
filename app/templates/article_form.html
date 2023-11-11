@@ -75,7 +75,7 @@
                            onchange="changeState('radio1', 'radio2', 'image-file', 'image-url')">
                 </div><br>
                  <p>
-                     {{ form.head_img(id='image-url', disabled=True, type='url') }}
+                     {{ form.head_img(id='image-url', disabled=True) }}
                 </p><br/>
                 {% for error in form.head_img.errors %}
                     <div class="alert alert-warning">
@@ -84,8 +84,42 @@
                     {% endfor %}
             </div>
         </div>
-            <p class="submit-form">
+            <p class="button-form">
                 {{ form.submit() }}
+                <button type="button" class="btn btn-outline-primary" style="width: 250px" onclick="showPreview()">
+                    Anteprima
+                </button>
             </p>
     </form>
+{% endblock %}
+
+{% block article_preview %}
+    <div class="row">
+        <div class="col-sm-3">
+            <h2>Autore</h2>
+            <div class="card" style="width:100%">
+                <img class="card-img-top" src="{{ user.avatar(200) }}" alt="avatar">
+                <div class="card-body">
+                    <h4 class="card-title">{{ user.username }}</h4>
+                    <p class="card-text">{{ user.about_me }}</p>
+                    <p class="profile-button">
+                        <a href="{{ url_for('user', username=user.username) }}" class="btn btn-primary">
+                            Visualizza Profilo
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            <h2></h2>
+            <p><i></i></p>
+            <hr>
+            <p style="text-align: right"></p>
+            <hr>
+            <img class="head_image" src="" alt="head_img"/><br><br>
+            <!-- con safe si dichara possibile e sicuro interpretare codice: con questo si interpreteranno i codici di formattazione html -->
+            <p class="article-body"></p>
+        </div>
+    </div>
 {% endblock %}

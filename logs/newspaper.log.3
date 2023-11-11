@@ -1,4 +1,4 @@
-2023-11-10 14:45:35,298 ERROR: Exception on /pubislhed/Titolo [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-10 20:33:52,197 ERROR: Exception on /pubislhed/Titolo [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,7 +12,7 @@ Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata\app\routes.py", line 83, in published
+  File "C:\Users\Matisse\Desktop\Testata\app\routes.py", line 89, in published
     return render_template(
            ^^^^^^^^^^^^^^^^
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\templating.py", line 152, in render_template
@@ -27,7 +27,7 @@ Traceback (most recent call last):
     raise rewrite_traceback_stack(source=source)
   File "C:\Users\Matisse\Desktop\Testata\app\templates\published.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "C:\Users\Matisse\Desktop\Testata\app\templates\base.html", line 82, in top-level template code
+  File "C:\Users\Matisse\Desktop\Testata\app\templates\base.html", line 84, in top-level template code
     {% block app_content %}{% endblock %}
     ^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\Matisse\Desktop\Testata\app\templates\published.html", line 39, in block 'app_content'
@@ -37,8 +37,13 @@ Traceback (most recent call last):
     if hasattr(obj, "jinja_pass_arg"):
        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 jinja2.exceptions.UndefinedError: 'None' has no attribute 'avatar'
-2023-11-10 14:46:56,079 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 14:47:38,277 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-10 20:35:01,210 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:35:45,466 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:38:52,123 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-10 20:40:48,174 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 10:40:04,376 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 10:45:57,403 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 10:45:59,376 ERROR: Exception on /pubislhed/Cosa succede scrivendo un titolo più lungo [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -52,11 +57,12 @@ Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata\app\routes.py", line 59, in published
+  File "C:\Users\Matisse\Desktop\Testata\app\routes.py", line 65, in published
     author = User.query.filter_by(username=article.author).first()
                                            ^^^^^^^^^^^^^^
 AttributeError: 'NoneType' object has no attribute 'author'
-2023-11-10 14:47:47,667 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-11 10:47:38,017 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 10:47:38,098 ERROR: Exception on /assign_role/VincenzoPoli [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -70,48 +76,50 @@ Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata\app\routes.py", line 59, in published
-    author = User.query.filter_by(username=article.author).first()
-                                           ^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'author'
-2023-11-10 14:52:20,218 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 14:58:43,424 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 14:59:44,392 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 15:03:12,790 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 15:03:27,624 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 15:04:21,569 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 15:09:23,311 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 15:10:21,502 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 15:10:34,102 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 15:10:42,969 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 15:11:05,297 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 15:13:15,085 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 15:14:04,281 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:20:43,353 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:22:07,759 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:25:03,993 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:26:57,822 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:33:01,970 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:39:40,584 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:42:36,569 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:45:08,460 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:45:37,319 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:46:22,349 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:46:57,564 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:47:13,292 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:47:44,191 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:50:26,740 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:52:42,811 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:52:53,722 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:55:56,184 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 16:59:52,399 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 17:02:00,235 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 17:03:32,413 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 17:05:49,636 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 17:07:58,725 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 17:14:13,049 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 17:16:18,652 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 17:16:43,324 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 17:19:10,068 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 17:19:59,433 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
-2023-11-10 17:21:30,054 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata\app\routes.py", line 208, in assign_role
+    return render_template('assign_role.html', user=user, form=form)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Matisse\Desktop\Testata\app\templates\assign_role.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Matisse\Desktop\Testata\app\templates\base.html", line 84, in top-level template code
+    {% block app_content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata\app\templates\assign_role.html", line 25, in block 'app_content'
+    <p>{{ user.followers.count() }} followers,  {{ user.followed.count() }} following.</p>
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'app.models.User object' has no attribute 'followers'
+2023-11-11 10:49:04,113 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 10:50:59,410 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 10:52:50,685 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 10:57:47,337 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 11:03:18,408 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 11:03:21,621 ERROR: Exception on /assign_role/VincenzoPoli [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+Traceback (most recent call last):
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    return self.finalize_request(rv)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 889, in finalize_request
+    response = self.make_response(rv)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1161, in make_response
+    raise TypeError(
+TypeError: The view function for 'assign_role' did not return a valid response. The function either returned None or ended without a return statement.

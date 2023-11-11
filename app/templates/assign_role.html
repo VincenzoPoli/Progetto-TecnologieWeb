@@ -13,8 +13,12 @@
         {% endif %}
     {% endwith %}
     <div class="row">
-        <div class="col-sm-4">
-            <h2>Ruolo: {{ user.role }}</h2>
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-3">
+            <hr>
+            <h4 style="text-align: center">Ruolo: <button type="button" class="btn btn-outline-info">{{ user.role }}</button></h4>
+            <hr>
             <div class="card" style="width:100%">
                 <img class="card-img-top" src="{{ user.avatar(256) }}" alt="avatar" style="width:100%">
                 <div class="card-body">
@@ -22,11 +26,10 @@
                     {% if user.about_me %}
                         <p class="card-text">{{ user.about_me }}</p>
                     {% endif %}
-                    <p>{{ user.followers.count() }} followers,  {{ user.followed.count() }} following.</p>
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 p-5 my-5 border" id="article-form">
+        <div class="col-sm-5 p-5 my-5 border" id="article-form">
             <form action="" method="post">
                 <h4>Seleziona ruolo</h4><br/>
                 {{ form.hidden_tag() }}
@@ -56,10 +59,12 @@
                         </div>
                     {% endfor %}<br/>
                 {% endif %}
-                <p class="submit-form">
+                <p class="button-form">
                     {{ form.submit() }}
                 </p>
             </form>
+        </div>
+        <div class="col-sm-2">
         </div>
     </div>
 {% endblock %}

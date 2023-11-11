@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='myscripts.js') }}"></script>
 
     {% if title %}
         <title>HardwareTested - {{ title }}</title>
@@ -26,7 +27,7 @@
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url_for('index') }}">
-                    <img src="http://127.0.0.1:5000/static/logo/aaalogoaaa.jpg" alt="Logo" style="width:50px;" class="rounded-pill">
+                    <img src="/static/logo/aaalogoaaa.jpg" alt="Logo" style="width:50px;" class="rounded-pill">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                     <span class="navbar-toggler-icon"></span>
@@ -45,11 +46,11 @@
                         {% if current_user.is_authenticated %}
                             {% if current_page == 'user' %}
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="{{ url_for('user', username=current_user.username) }}"><i class="bi bi-person"></i> Modifica profilo</a>
+                                    <a class="nav-link active" href="{{ url_for('user', username=current_user.username) }}"><i class="bi bi-person"></i> Il tuo profilo</a>
                                 </li>
                             {% else %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}"><i class="bi bi-person"></i> Modifica profilo</a>
+                                    <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}"><i class="bi bi-person"></i> Il tuo profilo</a>
                                 </li>
                             {% endif %}
                             {% if roles[current_user.role] > 0 %}
@@ -82,7 +83,11 @@
 
         <div class="container bg-white p-5 my-5" id="body_page"><br/>
             {% block app_content %}{% endblock %}
-        </div><br><br><br><br>
+        </div>
+
+         <div class="container bg-white p-5 my-5" style="display: none" id="preview-container"><br/>
+            {% block article_preview %}{% endblock %}
+         </div><br><br><br><br>
 
         <div class="mt-5 p-4 bg-dark text-white text-center">
             <div class="container mt-5">
@@ -103,90 +108,6 @@
         </div>
 
     </div>
-
-    <script>
-        function changeState(btn1_id, btn2_id, input1_id, input2_id) {
-            let btn1_radio, btn2_radio, input1, input2
-            btn1_radio = document.getElementById(btn1_id)
-            btn2_radio = document.getElementById(btn2_id)
-            input1 = document.getElementById(input1_id)
-            input2 = document.getElementById(input2_id)
-            if (btn1_radio.checked) {
-                input1.removeAttribute("disabled")
-                input2.setAttribute("disabled", "")
-            }
-
-            if (btn2_radio.checked) {
-                input2.removeAttribute("disabled")
-                input1.setAttribute("disabled", "")
-            }
-        }
-        function editPost(btn_el, id) {
-
-            btn_el.setAttribute("hidden", true)
-
-            let div_el, right_button, body_el, form_el, text_el, submit_el, content
-
-            div_el = document.getElementById(id)
-            body_el = document.getElementById(id).children[0]
-            content = body_el.innerHTML
-            div_el.removeChild(body_el)
-
-            form_el = document.createElement("form")
-            form_el.setAttribute("action", "/edit_post/" + id)
-            form_el.setAttribute("method", "post")
-
-            text_el = document.createElement("textarea")
-            text_el.setAttribute("rows", "4")
-            text_el.setAttribute("name", "new_body")
-            text_el.value = content
-
-            right_button = document.createElement("div")
-            right_button.setAttribute("class", "button-right")
-
-            submit_el = document.createElement("button")
-            submit_el.setAttribute("type", "submit")
-            submit_el.setAttribute("class", "btn btn-outline-primary")
-            submit_el.innerHTML = "Applica"
-
-            div_el.appendChild(form_el)
-            form_el.appendChild(text_el)
-            form_el.appendChild(right_button)
-            right_button.appendChild(submit_el)
-        }
-        function alertDeletingProfile() {
-            if (confirm("Sei sicuro di voler cancellare il tuo account? Non potrai più tornare indietro.")) {
-                window.location.href = "{{ url_for('delete_user') }}"
-            } else {
-              // Non fare niente!
-            }
-        }
-        function textFormatting(id) {
-            let textBody, content, highlighted
-            textBody = document.getElementById("body-textarticle")
-            highlighted = window.getSelection().toString()
-            content = textBody.value
-            if (id === "bold") {
-                if (highlighted) {
-                    textBody.value = content.replace(highlighted, "<b>" + highlighted + "</b>")
-                } else {
-                    textBody.value = content + "<b></b>"
-                }
-            } else if (id === "italic") {
-                if (highlighted) {
-                    textBody.value = content.replace(highlighted, "<i>" + highlighted + "</i>")
-                } else {
-                    textBody.value = content + "<i></i>"
-                }
-            } else if (id === "underline") {
-                if (highlighted) {
-                    textBody.value = content.replace(highlighted, "<u>" + highlighted + "</u>")
-                } else {
-                    textBody.value = content + "<u></u>"
-                }
-            }
-        }
-    </script>
 </body>
 
 </html>

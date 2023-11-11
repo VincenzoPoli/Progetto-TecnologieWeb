@@ -15,7 +15,7 @@ login.login_view = 'login'
 @app.route('/index')
 def index():
     # grazie a session sarà possibile ritornare alla pagina precedente quando si sottomette un form come ad esempio quello di login o modifica commenti
-    session['url'] = request.full_path
+    session['url'] = url_for('index')
     articles = Article.query.order_by(Article.timeStamp.desc()).all()
     first_row = articles[:2]
     second_row = articles[2:5]
@@ -31,7 +31,7 @@ def explore():
     # Returns per_page items from page page
     current_page = 'explore'
     # grazie a session sarà possibile ritornare alla pagina precedente quando si sottomette un form come ad esempio quello di login o modifica commenti
-    session['url'] = request.full_path
+    session['url'] = url_for('explore')
     page = request.args.get('page', 1, type=int)
     articles = Article.query.order_by(Article.timeStamp.desc()).all()
     first_col = articles[:8]
@@ -58,7 +58,7 @@ def published(article_title):
     # Returns per_page items from page page
     current_page = 'published'
     # grazie a session sarà possibile ritornare alla pagina precedente quando si sottomette un form come ad esempio quello di login o modifica commenti
-    session['url'] = request.full_path
+    session['url'] = url_for('published', article_title=article_title)
     page = request.args.get('page', 1, type=int)
     form = PostForm()
     article = Article.query.filter_by(title=article_title).first()
@@ -105,7 +105,7 @@ def login():
             username=form.username.data).first()  # selezione il primo risultato con username=dato fornito dall'utente ed inviato con una richiesta post, None altrimenti
         if user is None or not user.check_password(form.password.data):  # se l'utente non esiste o la password è errata
             flash('Username o password errati.')
-            return redirect(url_for('index'))
+            return redirect(session['url'])
         login_user(user, remember=form.remember_me.data)
         return redirect(session['url'])
     return render_template('login.html', title='Accedi', form=form)
@@ -121,7 +121,7 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        redirect(url_for('index'))
+        return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.username.data)
@@ -130,7 +130,7 @@ def register():
         db.session.commit()
         flash('Ti sei registrato!')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Registratir', form=form)
+    return render_template('register.html', title='Registrati', form=form)
 
 
 @app.route('/user/<username>')
@@ -195,7 +195,13 @@ def edit_password():
 @app.route('/assign_role/<username>', methods=['GET', 'POST'])
 @login_required
 def assign_role(username):
+
+    roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
     user = User.query.filter_by(username=username).first()
+    if roles[current_user.role] < 2 or roles[user.role] >= roles[current_user.role]:
+        flash('Non hai i permessi per compiere questa azione!')
+        return redirect(url_for('index'))
+
     form = AssignRoleForm()
     if form.validate_on_submit():
         if current_user.role == 'admin':
@@ -211,6 +217,12 @@ def assign_role(username):
 @app.route('/new_article', methods=['GET', 'POST'])
 @login_required
 def new_article():
+
+    roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
+    if roles[current_user.role] < 1:
+        flash('Non hai i permessi per compiere questa azione!')
+        return redirect(url_for('index'))
+
     current_page = 'new_article'
     form = ArticleForm()
     if form.validate_on_submit():
@@ -230,14 +242,21 @@ def new_article():
         flash('Immagine salvata con successo!')
         return redirect(url_for('index'))
 
-    return render_template('article_form.html', title='Nuovo articolo', form=form, current_page=current_page)
+    return render_template('article_form.html', title='Nuovo articolo', form=form, current_page=current_page, user=current_user)
 
 
 @app.route('/edit_article/<article_title>', methods=['GET', 'POST'])
 @login_required
 def edit_article(article_title):
+
+    roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
     article = Article.query.filter_by(title=article_title).first()
+    if roles[current_user.role] < 1 or current_user.username != article.author:
+        flash('Non hai i permessi per compiere questa azione!')
+        return redirect(url_for('index'))
+
     form = EditArticleForm()
+    user = User.query.filter_by(username=article.author).first()
     if form.validate_on_submit():
         if request.files:
             f = request.files['filename']
@@ -263,13 +282,17 @@ def edit_article(article_title):
         form.subtitle.data = article.subtitle
         form.body.data = article.body
         form.head_img.data = article.head_img
-    return render_template('article_form.html', title='Modifica articolo', form=form)
+    return render_template('article_form.html', title='Modifica articolo', form=form, user=user)
 
 
 @app.route('/delete_post/<post_id>')
 @login_required
 def delete_post(post_id):
+    roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
     post = Post.query.filter_by(id=post_id).first()
+    if roles[current_user.role] < 1 or current_user.username != post.author:
+        flash('Non hai i permessi per compiere questa azione!')
+        return redirect(url_for('index'))
     db.session.delete(post)
     db.session.commit()
     flash('Post eliminato con successo!')
@@ -279,7 +302,13 @@ def delete_post(post_id):
 @app.route('/delete_article/<article_id>')
 @login_required
 def delete_article(article_id):
-    article = Article.query.filter_by(id=int(article_id)).first()
+
+    roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
+    article = Article.query.filter_by(title=article_id).first()
+    if roles[current_user.role] < 1 or current_user.username != article.author:
+        flash('Non hai i permessi per compiere questa azione!')
+        return redirect(url_for('index'))
+
     posts = Post.query.filter_by(article_id=article.id).all()
     for post in posts:
         db.session.delete(post)
@@ -292,8 +321,14 @@ def delete_article(article_id):
 @app.route('/edit_post/<post_id>', methods=['GET', 'POST'])
 @login_required
 def edit_post(post_id):
+
+    roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
+    post = Post.query.filter_by(id=int(post_id)).first()
+    if roles[current_user.role] < 1 or current_user.username != post.author:
+        flash('Non hai i permessi per compiere questa azione!')
+        return redirect(url_for('index'))
+
     if request.method == 'POST':
-        post = Post.query.filter_by(id=int(post_id)).first()
         post.body = request.form['new_body']
         db.session.commit()
         flash("Commento modificato con successo!")
@@ -306,6 +341,9 @@ def delete_user():
     posts = Post.query.filter_by(user_id=current_user.id).all()
     for post in posts:
         db.session.delete(post)
+    articles = Post.query.filter_by(author=current_user.username).all()
+    for article in articles:
+        db.session.delete(article)
     db.session.delete(current_user)
     db.session.commit()
     flash('Account cancellato con successo!')

@@ -10,7 +10,7 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
-    <div style="float: right"><img src="http://127.0.0.1:5000/static/logo/bbblogobbb.png" alt="Index Banner" style="width:175px"></div><br>
+    <h3>Home</h3>
     <hr>
     <div class="row">
         {% for article in first_row %}
@@ -33,7 +33,7 @@
                     <div class="index">
                         <img class="index-image" src="{{ article.head_image() }}" alt="index-image">
                         <div class="text-block">
-                            <h3 class="text-link">{{ article.title }}</h3>
+                            <h5 class="text-link">{{ article.title }}</h5>
                         </div>
                     </div>
                 </a>
