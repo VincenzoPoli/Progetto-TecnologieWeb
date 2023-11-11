@@ -56,7 +56,7 @@ function alertDeletingProfile() {
 }
 function textFormatting(id) {
     let textBody, content, highlighted
-    textBody = document.getElementById("body-textarticle")
+    textBody = document.getElementById("article-body")
     highlighted = window.getSelection().toString()
     content = textBody.value
     if (id === "bold") {
@@ -81,7 +81,40 @@ function textFormatting(id) {
 }
 
 function showPreview() {
-    let x
-    x = document.getElementById("preview-container")
-    x.removeAttribute("style", "display: block")
+    let div_container
+    // form html
+    let article_title, article_subtitle, article_body, article_img
+    // contenuti form
+    let title_content, subtitle_content, body_content, url
+    // elementi html per la visualizzazione dei contenuti finora inseriri
+    let preview_title, preview_subtitle, preview_data, preview_body, preview_img
+
+    div_container = document.getElementById("preview-container")
+
+    article_title = document.getElementById("article-title")
+    article_subtitle = document.getElementById("article-subtitle")
+    article_body = document.getElementById("article-body")
+    article_img = document.getElementById("image-url")
+
+    title_content = article_title.value
+    subtitle_content = article_subtitle.value
+    body_content = article_body.value
+    url = article_img.value
+
+    preview_title = document.getElementById("title-preview")
+    preview_subtitle = document.getElementById("subtitle-preview")
+    preview_body = document.getElementById("body-preview")
+    preview_img = document.getElementById("img-preview")
+    preview_data = document.getElementById("data-preview")
+
+    preview_title.innerHTML = title_content
+    preview_subtitle.innerHTML = subtitle_content
+    preview_data.innerHTML = "Articolo pubblicato il: , alle ore: "
+    preview_body.innerHTML = body_content + " " + url
+    if (url)
+        preview_img.setAttribute("src", url)
+    else
+        preview_img.setAttribute("src", "/static/logo/headimg.png")
+
+    div_container.removeAttribute("style")
 }
