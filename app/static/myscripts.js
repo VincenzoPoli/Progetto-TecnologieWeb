@@ -111,10 +111,11 @@ function showPreview() {
     preview_subtitle.innerHTML = subtitle_content
     preview_data.innerHTML = "Articolo pubblicato il: , alle ore: "
     preview_body.innerHTML = body_content + " " + url
-    if (url)
-        preview_img.setAttribute("src", url)
-    else
-        preview_img.setAttribute("src", "/static/logo/headimg.png")
+    preview_img.setAttribute("src", url)
 
     div_container.removeAttribute("style")
+}
+
+function fallBackIMG(el) {
+    el.setAttribute("src", "/static/logo/fallback_img.jpg")
 }

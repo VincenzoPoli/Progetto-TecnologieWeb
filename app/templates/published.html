@@ -55,7 +55,7 @@
             <hr>
             <p style="text-align: right">{{ date_hour }}</p>
             <hr>
-            <img class="head_image" src="{{ article.head_image() }}" alt="head_img"/><br><br>
+            <img class="head_image" src="{{ article.head_image() }}" alt="head_img" onerror="fallBackIMG(this)"/><br><br>
             <!-- con safe si dichara possibile e sicuro interpretare codice: con questo si interpreteranno i codici di formattazione html -->
             <p class="article-body">{{ article.body | safe }}</p>
         </div>

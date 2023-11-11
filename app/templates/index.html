@@ -17,7 +17,7 @@
             <div class="col-sm-6 pt-5" id="image-link-first">
                 <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
                     <div class="index">
-                        <img class="index-image" src="{{ article.head_image() }}" alt="index-image">
+                        <img class="index-image" src="{{ article.head_image() }}" alt="index-image" onerror="fallBackIMG(this)">
                         <div class="text-block">
                             <h3 class="text-link">{{ article.title }}</h3>
                         </div>
@@ -31,7 +31,7 @@
             <div class="col-sm-4 pt-5" id="image-link-second">
                 <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
                     <div class="index">
-                        <img class="index-image" src="{{ article.head_image() }}" alt="index-image">
+                        <img class="index-image" src="{{ article.head_image() }}" alt="index-image" onerror="fallBackIMG(this)">
                         <div class="text-block">
                             <h5 class="text-link">{{ article.title }}</h5>
                         </div>
@@ -47,8 +47,8 @@
                 <table class="table">
                     <tr>
                         <td style="width: 150px">
-                            <a href="{{ article.head_image() }}">
-                                <img class="index-image-bottom" src="{{ article.head_image() }}" alt="index-image-bottom">
+                            <a href="{{ url_for('published', article_title=article.title) }}">
+                                <img class="index-image-bottom" src="{{ article.head_image() }}" alt="index-image-bottom" onerror="fallBackIMG(this)">
                             </a>
                         </td>
                         <!-- relative è necessario per posizionare la citazione dell'autore dove si desidera -->

@@ -33,19 +33,24 @@ def explore():
     # grazie a session sarà possibile ritornare alla pagina precedente quando si sottomette un form come ad esempio quello di login o modifica commenti
     session['url'] = url_for('explore')
     page = request.args.get('page', 1, type=int)
-    articles = Article.query.order_by(Article.timeStamp.desc()).all()
-    first_col = articles[:8]
-    second_col = articles[8:16]
-    '''if posts.has_next:
-        next_url = url_for('explore', page=posts.next_num)
+    articles = Article.query.order_by(Article.timeStamp.desc()).paginate(
+        page=page, per_page=app.config['ARTICLES_PER_PAGE'], error_out=False
+    )
+    if articles.has_next:
+        next_url = url_for('explore', page=articles.next_num)
     else:
         next_url = None
-    if posts.has_prev:
-        prev_url = url_for('explore', page=posts.prev_num)
+    if articles.has_prev:
+        prev_url = url_for('explore', page=articles.prev_num)
     else:
-        prev_url = None'''
+        prev_url = None
+    first_col = articles.items[:8]
+    second_col = articles.items[8:16]
     return render_template(
-        'explore.html', title='Esplora', first_col=first_col, second_col=second_col, user=current_user,
+        'explore.html', title='Esplora',
+        next_url=next_url, prev_url=prev_url,
+        first_col=first_col, second_col=second_col,
+        user=current_user,
         current_page=current_page
     )
 
@@ -57,12 +62,12 @@ def published(article_title):
     # paginate(page, per_page, error_out, max_per_page)
     # Returns per_page items from page page
     current_page = 'published'
-    # grazie a session sarà possibile ritornare alla pagina precedente quando si sottomette un form come ad esempio quello di login o modifica commenti
-    session['url'] = url_for('published', article_title=article_title)
-    page = request.args.get('page', 1, type=int)
-    form = PostForm()
     article = Article.query.filter_by(title=article_title).first()
     author = User.query.filter_by(username=article.author).first()
+    # grazie a session sarà possibile ritornare alla pagina precedente quando si sottomette un form come ad esempio quello di login o modifica commenti
+    session['url'] = url_for('published', article_title=article.title)
+    page = request.args.get('page', 1, type=int)
+    form = PostForm()
     date_hour = 'Articolo pubblicato il: {}/{}/{}, alle ore {}:{:02d}'.format(
         article.timeStamp.day, article.timeStamp.month, article.timeStamp.year, article.timeStamp.hour,
         article.timeStamp.minute

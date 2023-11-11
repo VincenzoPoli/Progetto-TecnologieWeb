@@ -1,57 +1,86 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-
-{% for article in first_col %}
-        <div class="row">
-            <div class="col-sm-7">
-                <table class="table">
-                    <tr>
-                        <td style="width: 180px">
-                            <a href="{{ url_for('published', article_title=article.title) }}">
-                                <img class="explore-image" src="{{ article.head_image() }}" alt="explore-image">
-                            </a>
-                        </td>
-                        <td style="position: relative">
-                            <h5 class="text-link">
-                                <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
-                                    {{ article.title }}
-                                </a>
-                            </h5>
-                            <p style="display: inline">Pubblicato da: </p>
-                            <p class="text-link" style="display: inline">
-                                <a class="btn btn-light" href="{{ url_for('user', username=article.author) }}">
-                                    <strong>{{ article.author }}</strong>
-                                </a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            {% if second_col %}
-                {% set second_article = second_col.pop() %}
-                <div class="col-sm-5">
-                    <table class="table">
-                        <tr>
-                            <td>
-                                <h5 class="text-link">
-                                    <a class="text-anchor" href="{{ article.head_image() }}">
-                                        {{ second_article.title }}
-                                    </a>
-                                </h5>
-                                <h6 style="color: red; display: inline">SEZIONE</h6>
-                                <p style="display: inline">di</p>
-                                <p class="text-link">
-                                    <a class="text-anchor" href="{{ url_for('user', username=second_article.author) }}">
-                                    {{ second_article.author }}
-                                    </a>
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            {% endif %}
+    <h3>Esplora</h3>
+    <hr>
+    <div class="row">
+        <div class="col-sm-1 pt-5"></div>
+        <div class="col-sm-6 pt-5">
+            <table class="table-responsive">
+                <tr>
+                    <td>
+                        {% for article in first_col %}
+                            <table class="table">
+                                <tr>
+                                    <td style="width: 180px">
+                                        <a href="{{ url_for('published', article_title=article.title) }}">
+                                            <img class="explore-image" src="{{ article.head_image() }}" alt="explore-image" onerror="fallBackIMG(this)">
+                                        </a>
+                                    </td>
+                                    <td style="position: relative">
+                                        <h5 class="text-link">
+                                            <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
+                                                {{ article.title }}
+                                            </a>
+                                        </h5>
+                                        <p style="display: inline">Pubblicato da: </p>
+                                        <p class="text-link" style="display: inline">
+                                            <a class="btn btn-light" href="{{ url_for('user', username=article.author) }}">
+                                                <strong>{{ article.author }}</strong>
+                                            </a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
         </div>
-    {% endfor %}
+        <div class="col-sm-3 pt-5">
+            <table class="table-responsive">
+                <tr>
+                    <td>
+                        {% for article in second_col %}
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <h5 class="text-link">
+                                            <a class="text-anchor" href="{{ url_for('published', article_title=article.title) }}">
+                                                {{ article.title }}
+                                            </a>
+                                        </h5>
+                                        <p style="display: inline">Pubblicato da: </p>
+                                        <p class="text-link" style="display: inline">
+                                        <a class="btn btn-light" href="{{ url_for('user', username=article.author) }}">
+                                            <strong>{{ article.author }}</strong>
+                                        </a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-2 pt-5"></div>
+    </div>
+    {% if next_url and prev_url %}
+        <ul class="pagination justify-content-end">
+            <li class="page-item"><a class="page-link" href="{{ next_url }}">Meno recenti</a></li>
+            <li class="page-item"><a class="page-link" href="{{ prev_url }}">Più recenti</a></li>
+        </ul>
+    {% elif next_url %}
+        <ul class="pagination justify-content-end">
+            <li class="page-item"><a class="page-link" href="{{ next_url }}">Meno recenti</a></li>
+            <li class="page-item disabled"><a class="page-link" href="{{ prev_url }}">Più recenti</a></li>
+        </ul>
+    {% elif prev_url %}
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled"><a class="page-link" href="{{ next_url }}">Meno recenti</a></li>
+            <li class="page-item"><a class="page-link" href="{{ prev_url }}">Più recenti</a></li>
+        </ul>
+    {% endif %}
 
 {% endblock %}

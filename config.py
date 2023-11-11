@@ -6,5 +6,6 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'app.db')
     SQALCHEMY_TRACK_MODIFICATIONS = False # disabilita la segnalazione all'applicazione ogni volta che si sta per apportare una modifica nel database
     POSTS_PER_PAGE = 1
+    ARTICLES_PER_PAGE = 16
     SESSION_PERMANENT = False
     SESSION_TYPE = "filesystem"

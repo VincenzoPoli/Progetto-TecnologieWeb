@@ -1,4 +1,4 @@
-2023-11-10 20:32:14,752 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-11 11:11:08,066 ERROR: Exception on /pubislhed/Cosa succede scrivendo un titolo più lungo [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -16,25 +16,7 @@ Traceback (most recent call last):
     author = User.query.filter_by(username=article.author).first()
                                            ^^^^^^^^^^^^^^
 AttributeError: 'NoneType' object has no attribute 'author'
-2023-11-10 20:32:18,048 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
-Traceback (most recent call last):
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata\app\routes.py", line 65, in published
-    author = User.query.filter_by(username=article.author).first()
-                                           ^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'author'
-2023-11-10 20:32:41,405 ERROR: Exception on /pubislhed/Titolo [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-11 11:11:49,095 ERROR: Exception on /pubislhed/Titolo [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -73,7 +55,31 @@ Traceback (most recent call last):
     if hasattr(obj, "jinja_pass_arg"):
        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 jinja2.exceptions.UndefinedError: 'None' has no attribute 'avatar'
-2023-11-10 20:33:52,146 ERROR: Exception on /pubislhed/Titolo [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-11 11:13:32,796 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 11:16:21,105 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 11:19:04,342 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 11:20:13,787 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 11:21:19,339 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 11:33:13,682 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 11:50:42,958 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 11:54:00,244 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 11:58:38,079 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:00:56,677 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:02:02,372 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:05:27,834 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:09:15,834 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:11:31,640 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:21:05,906 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:23:25,184 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:24:24,263 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:28:29,607 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:34:24,866 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:36:30,672 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:44:30,895 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 12:44:51,344 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 13:50:46,749 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 13:53:49,927 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata\app\__init__.py:29] 
+2023-11-11 13:53:52,585 ERROR: Exception on /new_article [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -87,9 +93,12 @@ Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata\app\routes.py", line 89, in published
-    return render_template(
-           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata\app\routes.py", line 245, in new_article
+    return render_template('article_form.html', title='Nuovo articolo', form=form, current_page=current_page)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\templating.py", line 152, in render_template
     return _render(app, template, context)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -100,15 +109,15 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Users\Matisse\Desktop\Testata\app\templates\published.html", line 1, in top-level template code
+  File "C:\Users\Matisse\Desktop\Testata\app\templates\article_form.html", line 1, in top-level template code
     {% extends "base.html" %}
   File "C:\Users\Matisse\Desktop\Testata\app\templates\base.html", line 84, in top-level template code
     {% block app_content %}{% endblock %}
     ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata\app\templates\published.html", line 39, in block 'app_content'
+  File "C:\Users\Matisse\Desktop\Testata\app\templates\article_form.html", line 98, in block 'app_content'
     <img class="card-img-top" src="{{ author.avatar(200) }}" alt="avatar">
     ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\utils.py", line 83, in from_obj
-    if hasattr(obj, "jinja_pass_arg"):
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'None' has no attribute 'avatar'
+  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'author' is undefined
