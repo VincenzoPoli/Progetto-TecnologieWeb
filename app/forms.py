@@ -112,3 +112,8 @@ class EditPasswordForm(FlaskForm):
     def validate_password(self, password):
         if not current_user.check_password(password.data):
             raise ValidationError('Password errata!')
+
+
+class ResetPasswordForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Reset')

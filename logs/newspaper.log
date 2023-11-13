@@ -1,18 +1,41 @@
-2023-11-11 18:55:00,859 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-13 14:30:23,521 ERROR: Exception on /reset_password [GET] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 66, in published
-    author = User.query.filter_by(username=article.author).first()
-                                           ^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'author'
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 360, in reset_password
+    return render_template('reset_password.html', title='Reset password', form=form)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\reset_password.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\base.html", line 85, in top-level template code
+    {% block app_content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\reset_password.html", line 17, in block 'app_content'
+    {% for error in form.password.errors %} <!-- Flask gestisce in automatio gli errori, basta aggiungere il codice HTML opportuno, come segue -->
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
+    return getattr(obj, attribute)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'app.forms.ResetPasswordForm object' has no attribute 'password'
+2023-11-13 14:30:46,923 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 14:31:56,339 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 

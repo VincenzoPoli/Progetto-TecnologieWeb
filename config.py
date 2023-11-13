@@ -5,6 +5,7 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'app.db')
     SQALCHEMY_TRACK_MODIFICATIONS = False # disabilita la segnalazione all'applicazione ogni volta che si sta per apportare una modifica nel database
+    ADMINS = ['vincenzo.poli.14@gmail.com']
     POSTS_PER_PAGE = 1
     ARTICLES_PER_PAGE = 16
     SESSION_PERMANENT = False

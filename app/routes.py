@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request, session
 from app import app, login, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, ArticleForm, EditArticleForm, \
-    AssignRoleForm, EditPasswordForm
+    AssignRoleForm, EditPasswordForm, ResetPasswordForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post, Article
 from werkzeug.utils import secure_filename
@@ -353,3 +353,16 @@ def delete_user():
     db.session.commit()
     flash('Account cancellato con successo!')
     return redirect(url_for('index'))
+
+@app.route('/reset_password')
+def reset_password():
+    if current_user.is_authenticated:
+        redirect(url_for('index'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data)
+        if user:
+            send_reset_password_email(user)
+        flash("Se l'indirizzo email è corretto, riceverai le istruzioni per reimpostare la password.")
+        return redirect(url_for('login'))
+    return render_template('reset_password.html', title='Reset password', form=form)

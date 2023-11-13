@@ -1,4 +1,4 @@
-2023-11-11 17:48:00,598 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-11 18:55:00,859 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,91 +12,100 @@ Traceback (most recent call last):
   File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 65, in published
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 66, in published
     author = User.query.filter_by(username=article.author).first()
                                            ^^^^^^^^^^^^^^
 AttributeError: 'NoneType' object has no attribute 'author'
-2023-11-11 17:56:32,729 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 17:56:34,579 ERROR: Exception on /explore [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-13 12:30:34,826 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
+2023-11-13 12:30:49,444 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
+2023-11-13 12:45:06,688 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 12:47:39,290 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 12:47:41,584 ERROR: Exception on /login [GET] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
     rv = self.handle_user_exception(e)
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
     rv = self.dispatch_request()
          ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 47, in explore
-    first_col = articles[:8]
-                ~~~~~~~~^^^^
-TypeError: 'QueryPagination' object is not subscriptable
-2023-11-11 17:58:10,642 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:00:08,636 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:02:46,388 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:04:15,380 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:04:35,916 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:05:07,209 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:08:35,846 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:11:25,272 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:18:14,352 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:23:09,947 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:26:14,350 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:26:17,444 ERROR: Exception on /explore [GET] [in C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py:825] 
-Traceback (most recent call last):
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 49, in explore
-    return render_template(
-           ^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\templating.py", line 152, in render_template
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 116, in login
+    return render_template('login.html', title='Accedi', form=form)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\templating.py", line 152, in render_template
     return _render(app, template, context)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\flask\templating.py", line 133, in _render
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\templating.py", line 133, in _render
     rv = template.render(context)
          ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
     self.environment.handle_exception()
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\tmpexplore.html", line 1, in top-level template code
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\login.html", line 1, in top-level template code
     {% extends "base.html" %}
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\base.html", line 85, in top-level template code
     {% block app_content %}{% endblock %}
     ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\tmpexplore.html", line 40, in block 'app_content'
-    {{ second_article.title }}
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\login.html", line 47, in block 'app_content'
+    <p class="new-user">Password dimenticata? <a href="{{ url_for('reset_password') }}">Recuperala!</a></p>
     ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\PycharmProjects\flaskProject\miniblog\venv\Lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-jinja2.exceptions.UndefinedError: 'second_article' is undefined
-2023-11-11 18:27:29,894 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:28:33,210 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:31:45,992 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:38:07,512 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:40:44,596 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:41:57,959 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:42:40,835 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:43:56,759 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:44:11,998 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:45:07,377 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:46:13,374 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:48:56,624 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:52:16,397 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:53:11,942 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
-2023-11-11 18:54:55,877 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:29] 
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1071, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1060, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\werkzeug\routing\map.py", line 919, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'reset_password'. Did you mean 'edit_password' instead?
+2023-11-13 12:48:52,001 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 12:50:47,268 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 12:51:31,857 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 12:55:59,878 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 12:57:18,400 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 14:24:59,789 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 14:28:11,276 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 14:28:15,018 ERROR: Exception on /reset_password [GET] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+Traceback (most recent call last):
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 360, in reset_password
+    return render_template('reset_password.html', title='Reset password', form=form)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\templating.py", line 152, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\templating.py", line 133, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\reset_password.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\base.html", line 85, in top-level template code
+    {% block app_content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\templates\reset_password.html", line 18, in block 'app_content'
+    {{ form.hidden_tag() }}
+TypeError: FlaskForm.hidden_tag() missing 1 required positional argument: 'self'
+2023-11-13 14:28:40,150 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 14:29:18,430 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-13 14:30:18,621 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 

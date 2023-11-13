@@ -6,6 +6,7 @@ from flask_login import LoginManager
 from flask_session import Session
 import logging
 from logging.handlers import RotatingFileHandler
+from flask_mail import Mail
 
 app = Flask(__name__)
 app.config.from_object(Config)  # necessaria per non avere errori a runtime quando si accede al form di login
@@ -14,6 +15,7 @@ migrate = Migrate(app,
                   db)  # migrate è una estensione che fornisce un’interazione tra Flask e Alembic, framework di migrazione per SQLAlchemy
 login = LoginManager(app)  # inizializza il login
 Session(app)
+mail = Mail(app)
 
 # log
 
