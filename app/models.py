@@ -1,11 +1,9 @@
-from datetime import datetime, timezone, time
-
-import jwt
-
+from datetime import datetime, timezone, time, timedelta
 from app import app, db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from hashlib import md5
+import jwt
 
 
 class User(UserMixin, db.Model):
@@ -33,19 +31,20 @@ class User(UserMixin, db.Model):
             # {} è l'hash della email (digest), d=identicon genera avatar geometrici e s={} è il size specificato
             return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(digest, size)
 
-    def get_reset_password_token(self, expires_in=600):
+    def get_reset_password_token(self, expires_in=timedelta(seconds=600)):
         return jwt.encode(
-            {'reset_password': self.id, 'exp': time() + expires_in},
+            {'reset_password': self.id, 'exp': datetime.now(timezone.utc) + expires_in},
             app.config['SECRET_KEY'], algorithm='HS256'
-        ).decode('utf-8')
+        ).encode('utf-8')
 
     @staticmethod
     def verify_reset_password_token(token):
         try:
-            id = jwt.decode(token, app.config['SECRET_KEY'], algorithms='HS256')['reset_password']
+            id = jwt.decode(token, app.config['SECRET_KEY'],
+                            algorithms=['HS256'])['reset_password']
         except:
             return
-        return User.query.get(id)
+        return User.query.filter_by(id=id).first()
 
     def __repr__(self):
         return '<User {}>'.format(self.username)

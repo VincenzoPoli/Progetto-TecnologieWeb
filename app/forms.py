@@ -114,6 +114,11 @@ class EditPasswordForm(FlaskForm):
             raise ValidationError('Password errata!')
 
 
-class ResetPasswordForm(FlaskForm):
+class ResetPasswordRequestForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     submit = SubmitField('Reset')
+
+class ResetPasswordForm(FlaskForm):
+    password1 = PasswordField('Nuova password', validators=[DataRequired()])
+    password2 = PasswordField('Ripeti password', validators=[DataRequired(), EqualTo('password1')])
+    submit = SubmitField('Modifica')
