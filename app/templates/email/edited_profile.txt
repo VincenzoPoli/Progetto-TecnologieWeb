@@ -1,0 +1,5 @@
+Ciao {{ user.username }}
+Il tuo profilo è aggiornato con successo!
+
+Cordialmente,
+il team di Newspaper

@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, url_for, request, session
 from app import app, login, db
-from app.email import send_reset_password_email
+from app.email import send_reset_password_email, send_registration_summary_email, send_edited_password_summary_email, send_edited_profile_summary_email, send_deleted_profile_summary_email
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, ArticleForm, EditArticleForm, \
-    AssignRoleForm, EditPasswordForm, ResetPasswordRequestForm,ResetPasswordForm
+    AssignRoleForm, EditPasswordForm, ResetPasswordRequestForm, ResetPasswordForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Post, Article
 from werkzeug.utils import secure_filename
@@ -135,6 +135,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Ti sei registrato!')
+        send_registration_summary_email(user)
         return redirect(url_for('login'))
     return render_template('register.html', title='Registrati', form=form)
 
@@ -163,23 +164,29 @@ def edit_profile():
     form = EditProfileForm()
     if form.validate_on_submit():
         if request.files:
+
             f = request.files['filename']
             f.save('app/static/uploads/' + secure_filename(f.filename))
             avatar_link = '/static/uploads/' + f.filename
+
             current_user.username = form.username.data
+            current_user.email = form.email.data
             current_user.avatar_link = avatar_link
             current_user.about_me = form.about_me.data
             db.session.commit()
         else:
             current_user.username = form.username.data
+            current_user.email = form.email.data
             current_user.avatar_link = form.avatar_link.data
             current_user.about_me = form.about_me.data
             db.session.commit()
+        send_edited_profile_summary_email(current_user)
         flash('Le tue modifiche sono state salvate.')
         return redirect(url_for('edit_profile'))
     # se arriva una richiesta GET, vengono visualizzati i dati correnti nel form, affinché sia possibile modificarli
     if request.method == 'GET':
         form.username.data = current_user.username
+        form.email.data = current_user.email
         form.avatar_link.data = current_user.avatar_link
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form, current_page=current_page)
@@ -194,6 +201,7 @@ def edit_password():
         current_user.set_password(form.password1.data)
         db.session.commit()
         flash('Passord modificata con successo!')
+        send_edited_password_summary_email(current_user)
         return redirect(url_for('edit_profile'))
     return render_template('edit_password.html', form=form, current_page=current_page)
 
@@ -201,7 +209,6 @@ def edit_password():
 @app.route('/assign_role/<username>', methods=['GET', 'POST'])
 @login_required
 def assign_role(username):
-
     roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
     user = User.query.filter_by(username=username).first()
     if roles[current_user.role] < 2 or roles[user.role] >= roles[current_user.role]:
@@ -223,7 +230,6 @@ def assign_role(username):
 @app.route('/new_article', methods=['GET', 'POST'])
 @login_required
 def new_article():
-
     roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
     if roles[current_user.role] < 1:
         flash('Non hai i permessi per compiere questa azione!')
@@ -248,13 +254,13 @@ def new_article():
         flash('Immagine salvata con successo!')
         return redirect(url_for('index'))
 
-    return render_template('article_form.html', title='Nuovo articolo', form=form, current_page=current_page, user=current_user)
+    return render_template('article_form.html', title='Nuovo articolo', form=form, current_page=current_page,
+                           user=current_user)
 
 
 @app.route('/edit_article/<article_title>', methods=['GET', 'POST'])
 @login_required
 def edit_article(article_title):
-
     roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
     article = Article.query.filter_by(title=article_title).first()
     if roles[current_user.role] < 1 or current_user.username != article.author:
@@ -308,7 +314,6 @@ def delete_post(post_id):
 @app.route('/delete_article/<article_id>')
 @login_required
 def delete_article(article_id):
-
     roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
     article = Article.query.filter_by(title=article_id).first()
     if roles[current_user.role] < 1 or current_user.username != article.author:
@@ -327,7 +332,6 @@ def delete_article(article_id):
 @app.route('/edit_post/<post_id>', methods=['GET', 'POST'])
 @login_required
 def edit_post(post_id):
-
     roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
     post = Post.query.filter_by(id=int(post_id)).first()
     if roles[current_user.role] < 1 or current_user.username != post.author:
@@ -350,10 +354,13 @@ def delete_user():
     articles = Post.query.filter_by(author=current_user.username).all()
     for article in articles:
         db.session.delete(article)
-    db.session.delete(current_user)
+    user = User.query.filter_by(id=current_user.id).first()
+    send_deleted_profile_summary_email(user)
+    db.session.delete(user)
     db.session.commit()
     flash('Account cancellato con successo!')
     return redirect(url_for('index'))
+
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
@@ -363,11 +370,11 @@ def reset_password_request():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
-            print(user.username)
             send_reset_password_email(user)
         flash("Se l'indirizzo email è corretto, riceverai le istruzioni per reimpostare la password.")
         return redirect(url_for('login'))
     return render_template('reset_password_request.html', title='Reset password', form=form)
+
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
@@ -383,4 +390,3 @@ def reset_password(token):
         flash('Password reimpostata con successo!')
         return redirect(url_for('login'))
     render_template('reset_password_form.html', title='Scegli nuova password', form=form)
-

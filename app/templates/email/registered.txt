@@ -1,0 +1,6 @@
+Ciao {{ user.username }}
+La registrazione è andata a buon fine!
+Ricorda che puoi sempre modificare il tuo indirizzo email dalla sezione "il tuo profilo".
+
+Cordialmente,
+il team di Newspaper

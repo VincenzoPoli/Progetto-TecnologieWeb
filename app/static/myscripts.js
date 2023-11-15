@@ -47,9 +47,9 @@ function editPost(btn_el, id) {
     form_el.appendChild(right_button)
     right_button.appendChild(submit_el)
 }
-function alertDeletingProfile() {
+function alertDeletingProfile(delete_profile_url) {
     if (confirm("Sei sicuro di voler cancellare il tuo account? Non potrai più tornare indietro.")) {
-        window.location.href = "{{ url_for('delete_user') }}"
+        window.location.href = delete_profile_url
     } else {
       // Non fare niente!
     }

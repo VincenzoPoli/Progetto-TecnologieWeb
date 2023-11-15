@@ -24,3 +24,38 @@ def send_reset_password_email(user):
                text_body=render_template('email/reset_password.txt', user=user, token=token),
                html_body=render_template('email/reset_password.html', user=user, token=token)
                )
+
+
+def send_registration_summary_email(user):
+    send_email('[Newspaper] Conferma di registrazione',
+               sender=app.config['ADMINS'][0],
+               recipients=[user.email],
+               text_body=render_template('email/registered.txt', user=user),
+               html_body=render_template('email/registered.html', user=user)
+               )
+
+
+def send_edited_password_summary_email(user):
+    send_email('[Newspaper] Password modificata',
+               sender=app.config['ADMINS'][0],
+               recipients=[user.email],
+               text_body=render_template('email/edited_password.txt', user=user),
+               html_body=render_template('email/edited_password.html', user=user)
+               )
+
+
+def send_edited_profile_summary_email(user):
+    send_email('[Newspaper] Profilo aggiornato',
+               sender=app.config['ADMINS'][0],
+               recipients=[user.email],
+               text_body=render_template('email/edited_profile.txt', user=user),
+               html_body=render_template('email/edited_profile.html', user=user)
+               )
+
+def send_deleted_profile_summary_email(user):
+    send_email('[Newspaper] Profilo eliminato',
+               sender=app.config['ADMINS'][0],
+               recipients=[user.email],
+               text_body=render_template('email/deleted_user.txt', user=user),
+               html_body=render_template('email/deleted_user.html', user=user)
+               )

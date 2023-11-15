@@ -1,0 +1,6 @@
+Ciao {{ user.username }}
+Il tuo profilo è stato cancellato con successo.
+Ci auguriamo che tu possa tornare presto.
+
+Cordialmente,
+il team di Newspaper

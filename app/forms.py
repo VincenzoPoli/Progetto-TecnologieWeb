@@ -77,10 +77,9 @@ class RegistrationForm(FlaskForm):
 
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
     avatar_link = StringField('Avatar')
     about_me = TextAreaField('Su di me', validators=[Length(min=0, max=140)])
-    password1 = PasswordField('Password', validators=[DataRequired()])
-    password2 = PasswordField('Password', validators=[DataRequired(), EqualTo('password1')])
     submit = SubmitField('Invia')
 
     def validate_username(self, username):
