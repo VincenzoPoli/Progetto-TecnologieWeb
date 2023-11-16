@@ -2,27 +2,25 @@
 
 ## Instructions
 
-Create the virtual environment
+**Create the virtual environment**
 
-- python -m venv venv
+python -m venv venv
 
-Run pyhon virtual env
+**Run pyhon virtual env**
 
-**Windows**
+- Windows
 
-- venv\Scripts\activate
+venv\Scripts\activate
 
-**Linux**
+- Linux
 
-- . venv/bin/activate
+. venv/bin/activate
 
-Install requirements
+**Install requirements**
 
-- pip install -r requirements.txt
-
-[OneDrive Parthenope]
+pip install -r requirements.txt
 
 ## Project proposal
 
-- [OneDrive Parthenope](https://studentiuniparthenope-my.sharepoint.com/:p:/g/personal/vincenzo_poli001_studenti_uniparthenope_it/EXVvS7KbxfBLlMSb0zOTBpIB7V9TtCP7Xpk8fTtpMGMaKA?e=lIHQ4j)
+[OneDrive Parthenope](https://studentiuniparthenope-my.sharepoint.com/:p:/g/personal/vincenzo_poli001_studenti_uniparthenope_it/EXVvS7KbxfBLlMSb0zOTBpIB7V9TtCP7Xpk8fTtpMGMaKA?e=lIHQ4j)
 
