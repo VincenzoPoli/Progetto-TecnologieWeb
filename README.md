@@ -4,21 +4,21 @@
 
 **Create the virtual environment**
 
-python -m venv venv
+- python -m venv venv
 
 **Run pyhon virtual env**
 
-- Windows
+Windows
 
-venv\Scripts\activate
+- venv\Scripts\activate
 
-- Linux
+Linux
 
-. venv/bin/activate
+- . venv/bin/activate
 
 **Install requirements**
 
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 ## Project proposal
 
