@@ -3,15 +3,16 @@
 ## Instructions
 
 The IDE with which the project was developed is PyCharm.
-If you won't be using PyCharm, the environment variables for the virtual enviromente are:
-
-- FLASK_APP=newspaper.py
-- FLASK_ENV=development
-- FLASK_DEBUG=0
 
 **Create the virtual environment**
 
+Windows
+
 - python -m venv venv
+
+Linux
+
+- python3 -m venv venv
 
 **Run virtual env**
 
@@ -26,6 +27,20 @@ Linux
 **Install requirements**
 
 - pip install -r requirements.txt
+
+If you won't be using PyCharm, the environment variables for the virtual enviromente are:
+
+Windows
+
+- set FLASK_APP=newspaper.py
+- set FLASK_ENV=development
+- set FLASK_DEBUG=0
+
+Linux
+
+- export FLASK_APP=newspaper.py
+- export FLASK_ENV=development
+- export FLASK_DEBUG=0
 
 ## Project proposal
 
