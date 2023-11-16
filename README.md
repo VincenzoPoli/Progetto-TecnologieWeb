@@ -6,7 +6,7 @@
 
 - python -m venv venv
 
-**Run pyhon virtual env**
+**Run virtual env**
 
 Windows
 
