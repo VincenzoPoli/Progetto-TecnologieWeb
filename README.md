@@ -2,6 +2,13 @@
 
 ## Instructions
 
+The IDE with which the project was developed is PyCharm.
+If you won't be using PyCharm, the environment variables for the virtual enviromente are
+
+- FLASK_APP=newspaper.py
+- FLASK_ENV=development
+- FLASK_DEBUG=0
+
 **Create the virtual environment**
 
 - python -m venv venv
