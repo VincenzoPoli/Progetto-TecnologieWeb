@@ -12,7 +12,7 @@
                         {% for article in first_col %}
                             <table class="table">
                                 <tr>
-                                    <td style="width: 180px">
+                                    <td style="width: 200px; height: 140px">
                                         <a href="{{ url_for('published', article_title=article.title) }}">
                                             <img class="explore-image" src="{{ article.head_image() }}" alt="explore-image" onerror="fallBackIMG(this)">
                                         </a>

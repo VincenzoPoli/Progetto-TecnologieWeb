@@ -54,12 +54,11 @@ textarea {
     height: 100%;
     margin: 0 auto;
 }
-
 .index-image {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
-
 .index .text-block {
     position: absolute;
     bottom: 0;
@@ -70,22 +69,16 @@ textarea {
     padding: 20px;
 }
 .index-image-bottom {
-    width: auto;
-    height: 120px;
+    width: 100%;
+    height: 100%;
     border-radius: 8px;
-    object-fit: cover;
     overflow: hidden;
 }
-/*.explore {
-    width: 180px;
-    height: 120px;
-    filter: drop-shadow(8px 8px 10px rgb(128, 128, 128));
-}*/
 .explore-image {
-    width: 200px;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     border-radius: 8px;
-    object-fit: cover;
 }
 
 .index-image:hover, .explore:hover {

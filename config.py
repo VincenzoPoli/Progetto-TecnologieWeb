@@ -12,7 +12,7 @@ class Config(object):
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
     ADMINS = ['progettotecweb0@gmail.com']
-    POSTS_PER_PAGE = 1
+    POSTS_PER_PAGE = 8
     ARTICLES_PER_PAGE = 16
     SESSION_PERMANENT = False
     SESSION_TYPE = "filesystem"

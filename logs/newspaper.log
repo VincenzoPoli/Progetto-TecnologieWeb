@@ -23,3 +23,69 @@ Traceback (most recent call last):
 AttributeError: 'function' object has no attribute 'email'
 2023-11-15 10:34:44,610 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
 2023-11-15 10:43:24,075 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 13:51:24,381 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 13:54:24,008 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+Traceback (most recent call last):
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 67, in published
+    author = User.query.filter_by(username=article.author).first()
+                                           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'author'
+2023-11-16 13:54:35,095 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+Traceback (most recent call last):
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 67, in published
+    author = User.query.filter_by(username=article.author).first()
+                                           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'author'
+2023-11-16 14:04:07,145 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+Traceback (most recent call last):
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 67, in published
+    author = User.query.filter_by(username=article.author).first()
+                                           ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'author'
+2023-11-16 14:25:42,752 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 14:26:05,180 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 14:27:00,031 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 14:33:24,954 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 14:34:04,542 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 14:34:55,371 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 14:35:38,790 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 14:36:36,787 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 14:37:55,199 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 14:42:59,257 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-16 14:49:14,480 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
