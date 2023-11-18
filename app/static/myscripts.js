@@ -22,7 +22,7 @@ function editPost(btn_el, id, url) {
 
     div_el = document.getElementById(id)
     body_el = document.getElementById(id).children[0]
-    content = body_el.innerHTML + " " + url
+    content = body_el.innerHTML
 
     text_el = document.createElement("textarea")
     text_el.setAttribute("rows", "4")
@@ -41,16 +41,29 @@ function editPost(btn_el, id, url) {
     div_el.appendChild(text_el)
     div_el.appendChild(right_button)
     right_button.appendChild(submit_el)
+
     submit_el.onclick = function() {
+
         let data
         data = {"new_body": text_el.value}
-        $.post(url, data, function(result) {
-            body_el.innerHTML = result
+        $(document).ready(function() {
+            $.post(url, data, function(result) {
 
-            right_button.removeChild(submit_el)
-            div_el.removeChild(right_button)
-            div_el.removeChild(text_el)
-            div_el.appendChild(body_el)
+                let div_flashed_message
+                body_el.innerHTML = result
+
+                div_flashed_message = document.createElement("div")
+                div_flashed_message.setAttribute("class", "alert alert-info")
+                div_flashed_message.innerHTML = "Commento modificato con successo!"
+
+                right_button.removeChild(submit_el)
+                div_el.removeChild(right_button)
+                div_el.removeChild(text_el)
+                div_el.appendChild(body_el)
+                div_el.appendChild(div_flashed_message)
+                btn_el.removeAttribute("hidden")
+
+            })
         })
     }
 }

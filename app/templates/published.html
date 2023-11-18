@@ -21,7 +21,7 @@
         <hr>
     {% endif %}
 
-    {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal serve col metodo flash -->
+    {% with messages = get_flashed_messages() %}  <!-- ottiene messaggio inviato dal server col metodo flash -->
         {% if messages %} <!-- controlla che vi siano messaggi -->
             {% for message in messages %}
                 <div class="alert alert-info">

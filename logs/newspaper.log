@@ -105,3 +105,9 @@ Traceback (most recent call last):
     ^^^^^^^^^
 AttributeError: 'NoneType' object has no attribute 'body'
 2023-11-18 14:12:22,781 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:21:27,224 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:22:34,365 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:24:47,160 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:31:55,695 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:37:40,138 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:39:02,394 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 

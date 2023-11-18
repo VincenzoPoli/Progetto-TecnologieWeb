@@ -341,7 +341,6 @@ def edit_post(post_id):
     if request.method == 'POST':
         post.body = request.form['new_body']
         db.session.commit()
-        flash("Commento modificato con successo!")
     return post.body
 
 
