@@ -333,8 +333,8 @@ def delete_article(article_id):
 @login_required
 def edit_post(post_id):
     roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
-    post = Post.query.filter_by(id=int(post_id)).first()
-    if roles[current_user.role] < 1 or current_user.username != post.author:
+    post = Post.query.filter_by(id=post_id).first()
+    if roles[current_user.role] < 1 and current_user.username != post.author:
         flash('Non hai i permessi per compiere questa azione!')
         return redirect(url_for('index'))
 
@@ -342,7 +342,7 @@ def edit_post(post_id):
         post.body = request.form['new_body']
         db.session.commit()
         flash("Commento modificato con successo!")
-    return redirect(session['url'])
+    return post.body
 
 
 @app.route('/delete_user')

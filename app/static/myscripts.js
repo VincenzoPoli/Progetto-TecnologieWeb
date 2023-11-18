@@ -14,20 +14,15 @@ function changeState(btn1_id, btn2_id, input1_id, input2_id) {
         input1.setAttribute("disabled", "")
     }
 }
-function editPost(btn_el, id) {
+function editPost(btn_el, id, url) {
 
     btn_el.setAttribute("hidden", true)
 
-    let div_el, right_button, body_el, form_el, text_el, submit_el, content
+    let div_el, right_button, body_el, text_el, submit_el, content
 
     div_el = document.getElementById(id)
     body_el = document.getElementById(id).children[0]
-    content = body_el.innerHTML
-    div_el.removeChild(body_el)
-
-    form_el = document.createElement("form")
-    form_el.setAttribute("action", "/edit_post/" + id)
-    form_el.setAttribute("method", "post")
+    content = body_el.innerHTML + " " + url
 
     text_el = document.createElement("textarea")
     text_el.setAttribute("rows", "4")
@@ -42,11 +37,24 @@ function editPost(btn_el, id) {
     submit_el.setAttribute("class", "btn btn-outline-primary")
     submit_el.innerHTML = "Applica"
 
-    div_el.appendChild(form_el)
-    form_el.appendChild(text_el)
-    form_el.appendChild(right_button)
+    div_el.removeChild(body_el)
+    div_el.appendChild(text_el)
+    div_el.appendChild(right_button)
     right_button.appendChild(submit_el)
+    submit_el.onclick = function() {
+        let data
+        data = {"new_body": text_el.value}
+        $.post(url, data, function(result) {
+            body_el.innerHTML = result
+
+            right_button.removeChild(submit_el)
+            div_el.removeChild(right_button)
+            div_el.removeChild(text_el)
+            div_el.appendChild(body_el)
+        })
+    }
 }
+
 function alertDeletingProfile(delete_profile_url) {
     if (confirm("Sei sicuro di voler cancellare il tuo account? Non potrai più tornare indietro.")) {
         window.location.href = delete_profile_url
