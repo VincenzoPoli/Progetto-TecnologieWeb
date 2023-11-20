@@ -1,4 +1,4 @@
-2023-11-15 10:33:40,690 ERROR: Exception on /edit_profile [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-18 14:10:10,387 ERROR: Exception on /edit_post/{{ post.id }} [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -15,16 +15,11 @@ Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 183, in edit_profile
-    send_edited_profile_summary_email(user)
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\email.py", line 50, in send_edited_profile_summary_email
-    recipients=[user.email],
-                ^^^^^^^^^^
-AttributeError: 'function' object has no attribute 'email'
-2023-11-15 10:34:44,610 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-15 10:43:24,075 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 13:51:24,381 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 13:54:24,008 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 342, in edit_post
+    post.body = request.form['new_body']
+    ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'body'
+2023-11-18 14:10:11,826 ERROR: Exception on /edit_post/{{ post.id }} [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -38,11 +33,15 @@ Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 67, in published
-    author = User.query.filter_by(username=article.author).first()
-                                           ^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'author'
-2023-11-16 13:54:35,095 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 342, in edit_post
+    post.body = request.form['new_body']
+    ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'body'
+2023-11-18 14:10:51,843 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:11:01,433 ERROR: Exception on /edit_post/{{ post.id }} [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -56,11 +55,14 @@ Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 67, in published
-    author = User.query.filter_by(username=article.author).first()
-                                           ^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'author'
-2023-11-16 14:04:07,145 ERROR: Exception on /pubislhed/None [GET] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 342, in edit_post
+    post.body = request.form['new_body']
+    ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'body'
+2023-11-18 14:11:01,680 ERROR: Exception on /edit_post/{{ post.id }} [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -74,30 +76,50 @@ Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 67, in published
-    author = User.query.filter_by(username=article.author).first()
-                                           ^^^^^^^^^^^^^^
-AttributeError: 'NoneType' object has no attribute 'author'
-2023-11-16 14:25:42,752 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 14:26:05,180 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 14:27:00,031 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 14:33:24,954 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 14:34:04,542 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 14:34:55,371 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 14:35:38,790 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 14:36:36,787 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 14:37:55,199 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 14:42:59,257 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 14:49:14,480 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-16 18:04:25,523 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 12:23:25,680 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 12:26:00,346 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 12:41:45,335 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 12:42:27,499 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 12:43:14,634 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 12:43:38,359 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 12:47:57,545 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 12:48:15,264 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 13:58:13,323 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 14:00:47,851 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-18 14:10:05,408 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 342, in edit_post
+    post.body = request.form['new_body']
+    ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'body'
+2023-11-18 14:11:01,821 ERROR: Exception on /edit_post/{{ post.id }} [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+Traceback (most recent call last):
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 342, in edit_post
+    post.body = request.form['new_body']
+    ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'body'
+2023-11-18 14:12:22,781 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:21:27,224 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:22:34,365 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:24:47,160 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:31:55,695 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:37:40,138 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-18 14:39:02,394 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 08:21:33,786 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 08:22:59,991 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 08:23:46,832 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 08:27:06,106 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 08:28:25,382 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 08:31:45,968 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 08:42:20,196 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 09:01:49,365 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 09:03:18,664 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 09:04:13,172 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 09:04:26,417 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-20 09:05:45,974 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 

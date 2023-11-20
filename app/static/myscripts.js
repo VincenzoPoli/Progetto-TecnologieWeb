@@ -101,7 +101,7 @@ function textFormatting(id) {
     }
 }
 
-function showPreview() {
+function showPreview(article_date) {
     let div_container
     // form html
     let article_title, article_subtitle, article_body, article_img
@@ -109,6 +109,7 @@ function showPreview() {
     let title_content, subtitle_content, body_content, url
     // elementi html per la visualizzazione dei contenuti finora inseriri
     let preview_title, preview_subtitle, preview_data, preview_body, preview_img
+    let d, month, day, output1, hours, minutes, output2
 
     div_container = document.getElementById("preview-container")
 
@@ -130,9 +131,22 @@ function showPreview() {
 
     preview_title.innerHTML = title_content
     preview_subtitle.innerHTML = subtitle_content
-    preview_data.innerHTML = "Articolo pubblicato il: , alle ore: "
     preview_body.innerHTML = body_content + " " + url
     preview_img.setAttribute("src", url)
+
+    if (article_date==="None") {
+        d = new Date()
+        month = d.getMonth()+1
+        day = d.getDate()
+        output1 = (day<10 ? "0" : "") + day + "/" + (month<10 ? "0" : "") + month + "/" + d.getFullYear()
+        minutes = d.getMinutes()
+        hours = d.getHours()
+        output2 = (hours<10 ? "0" : "") + hours + ":" + (minutes<10 ? "0" : "") + minutes
+        preview_data.innerHTML = "Articolo pubblicato il: " + output1 + ", alle ore: " + output2
+    }
+    else {
+        preview_data.innerHTML = article_date
+    }
 
     div_container.removeAttribute("style")
 }

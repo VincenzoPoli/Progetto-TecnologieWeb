@@ -237,6 +237,7 @@ def new_article():
 
     current_page = 'new_article'
     form = ArticleForm()
+    date_hour = None
     if form.validate_on_submit():
         if request.files:
             f = request.files['filename']
@@ -255,7 +256,7 @@ def new_article():
         return redirect(url_for('index'))
 
     return render_template('article_form.html', title='Nuovo articolo', form=form, current_page=current_page,
-                           user=current_user)
+                           user=current_user, date_hour=date_hour)
 
 
 @app.route('/edit_article/<article_title>', methods=['GET', 'POST'])
@@ -263,12 +264,16 @@ def new_article():
 def edit_article(article_title):
     roles = {'admin': 3, 'capo redattore': 2, 'redattore': 1, 'utente': 0}
     article = Article.query.filter_by(title=article_title).first()
-    if roles[current_user.role] < 1 or current_user.username != article.author:
+    if roles[current_user.role] < 1 and current_user.username != article.author:
         flash('Non hai i permessi per compiere questa azione!')
         return redirect(url_for('index'))
 
     form = EditArticleForm()
     user = User.query.filter_by(username=article.author).first()
+    date_hour = 'Articolo pubblicato il: {}/{}/{}, alle ore {}:{:02d}'.format(
+        article.timeStamp.day, article.timeStamp.month, article.timeStamp.year, article.timeStamp.hour,
+        article.timeStamp.minute
+    )
     if form.validate_on_submit():
         if request.files:
             f = request.files['filename']
@@ -294,7 +299,7 @@ def edit_article(article_title):
         form.subtitle.data = article.subtitle
         form.body.data = article.body
         form.head_img.data = article.head_img
-    return render_template('article_form.html', title='Modifica articolo', form=form, user=user)
+    return render_template('article_form.html', title='Modifica articolo', form=form, user=user, date_hour=date_hour)
 
 
 @app.route('/delete_post/<post_id>')

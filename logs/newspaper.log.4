@@ -1,4 +1,4 @@
-2023-11-14 15:07:03,167 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-14 15:23:38,604 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -18,24 +18,8 @@ Traceback (most recent call last):
     token = user.get_reset_password_token()
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'Query' object has no attribute 'get_reset_password_token'
-2023-11-14 15:08:53,990 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:09:09,955 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:09:13,083 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:09:26,180 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:09:47,391 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:10:06,543 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:10:11,631 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:10:17,010 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:11:24,283 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:11:28,943 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:12:36,439 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:12:39,158 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:12:45,544 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:13:15,279 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:13:19,698 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:13:23,964 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:13:28,961 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:14:35,170 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-14 15:24:32,685 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-14 15:24:39,451 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -55,29 +39,8 @@ Traceback (most recent call last):
     token = user.get_reset_password_token()
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'Query' object has no attribute 'get_reset_password_token'
-2023-11-14 15:17:23,144 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:17:28,531 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
-Traceback (most recent call last):
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
-    response = self.full_dispatch_request()
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 366, in reset_password_request
-    send_reset_password_email(user)
-  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\email.py", line 21, in send_reset_password_email
-    token = user.get_reset_password_token()
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'Query' object has no attribute 'get_reset_password_token'
-2023-11-14 15:21:34,522 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:21:41,041 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-14 15:26:22,479 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-14 15:26:29,663 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -97,8 +60,8 @@ Traceback (most recent call last):
     token = user.get_reset_password_token()
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'Query' object has no attribute 'get_reset_password_token'
-2023-11-14 15:22:25,281 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
-2023-11-14 15:22:31,165 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+2023-11-14 15:29:29,410 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-14 15:29:36,275 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
 Traceback (most recent call last):
   File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
     response = self.full_dispatch_request()
@@ -118,4 +81,49 @@ Traceback (most recent call last):
     token = user.get_reset_password_token()
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'Query' object has no attribute 'get_reset_password_token'
-2023-11-14 15:23:31,118 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-14 15:30:05,882 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-14 15:30:14,502 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+Traceback (most recent call last):
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 366, in reset_password_request
+    print(user.username)
+          ^^^^^^^^^^^^^
+AttributeError: 'Query' object has no attribute 'username'
+2023-11-14 15:30:37,501 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-14 15:36:39,890 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-14 15:36:52,067 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
+2023-11-14 15:37:04,997 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py:825] 
+Traceback (most recent call last):
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\venv\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\routes.py", line 367, in reset_password_request
+    send_reset_password_email(user)
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\email.py", line 20, in send_reset_password_email
+    token = user.get_reset_password_token()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Matisse\Desktop\Testata Giornalistica\app\models.py", line 36, in get_reset_password_token
+    {'reset_password': self.id, 'exp': time() + expires_in},
+                                       ~~~~~~~^~~~~~~~~~~~
+TypeError: unsupported operand type(s) for +: 'datetime.time' and 'int'
+2023-11-14 15:42:12,269 INFO: Newspaper startup [in C:\Users\Matisse\Desktop\Testata Giornalistica\app\__init__.py:31] 
